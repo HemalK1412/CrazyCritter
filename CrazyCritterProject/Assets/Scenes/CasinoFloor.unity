@@ -231,7 +231,7 @@ GameObject:
   - component: {fileID: 883057678}
   - component: {fileID: 883057682}
   m_Layer: 0
-  m_Name: Catch Game
+  m_Name: Test Casino Slot Machine
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -320,7 +320,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 1.86, z: 17.89}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 1055603400}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &883057682
@@ -336,6 +337,72 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   InteractRadius: 5
+--- !u!1 &1055603399
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1055603400}
+  - component: {fileID: 1055603401}
+  - component: {fileID: 1055603402}
+  m_Layer: 0
+  m_Name: Interact
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1055603400
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1055603399}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 883057681}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1055603401
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1055603399}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b0e8bd635b869f4bac621141eaccfe8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!135 &1055603402
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1055603399}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 0.5
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1408379833
 GameObject:
   m_ObjectHideFlags: 0
@@ -494,6 +561,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: GameManger
       objectReference: {fileID: 0}
+    - target: {fileID: 8532306501996128986, guid: f8edb76fe0c4ed64db478e5bd4f95bc2, type: 3}
+      propertyPath: p_player
+      value: 
+      objectReference: {fileID: 4451488857087519124}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1624,6 +1695,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 350d72f38705ad94aaca184d1b5f83da, type: 3}
+--- !u!1 &4451488857087519124 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 398971728160785299, guid: 350d72f38705ad94aaca184d1b5f83da, type: 3}
+  m_PrefabInstance: {fileID: 4451488857087519123}
+  m_PrefabAsset: {fileID: 0}
 --- !u!224 &4748217410713534770
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2463,8 +2539,8 @@ SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 705507995}
-  - {fileID: 1408379837}
+  - {fileID: 1961203208}
   - {fileID: 4451488857087519123}
   - {fileID: 883057681}
-  - {fileID: 1961203208}
+  - {fileID: 1408379837}
   - {fileID: 7933157771919883194}

@@ -9,9 +9,11 @@ public class Shuffle : MonoBehaviour
     [SerializeField] float lerpmultiplier;
     public GameObject[] cups;
 
-    
-    
-    GameManager2 gameManager;
+
+    // To be grabbed form the GameManager(SaveSyatem)
+    public int NoofDays;
+
+
     int[] DefaultLength;
     
     private void Start()
@@ -27,7 +29,7 @@ public class Shuffle : MonoBehaviour
             
             //List<int> Locations = ShuffleList(DefaultLength);
 
-            for (int j = 0; j < gameManager.NoofDays; j++)
+            for (int j = 0; j < NoofDays; j++)
             {
                 for(int k = 0;k < defaults.Length; k++)
                 {
