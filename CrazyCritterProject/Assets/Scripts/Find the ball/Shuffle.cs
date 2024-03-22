@@ -11,7 +11,7 @@ public class Shuffle : MonoBehaviour
 
     
     
-    GameManager gameManager;
+    GameManager2 gameManager;
     int[] DefaultLength;
     
     private void Start()

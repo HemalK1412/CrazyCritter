@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class NutCatch : MonoBehaviour
+public class Interaction : MonoBehaviour
 {
     public float InteractRadius;
 
