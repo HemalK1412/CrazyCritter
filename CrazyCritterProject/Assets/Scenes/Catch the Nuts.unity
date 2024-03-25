@@ -350,7 +350,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1775948416}
   - component: {fileID: 1775948415}
-  - component: {fileID: 1775948417}
+  - component: {fileID: 1775948418}
   m_Layer: 0
   m_Name: Spawner
   m_TagString: Untagged
@@ -394,7 +394,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1775948417
+--- !u!114 &1775948418
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -403,14 +403,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1775948414}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4eb4be5f523fce94cb0590519c3e953e, type: 3}
+  m_Script: {fileID: 11500000, guid: 62aaff36ca56c754b9ba86a04c95d742, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  col: {fileID: 1775948415}
-  CollisioncheckRadius: 0.02
-  objectcount: 1
+  spawnArea: {fileID: 1775948415}
   Nuts: {fileID: 8095593917882626314, guid: a0ccf315f029d59459b69bbdfd8063bc, type: 3}
-  Rocks: {fileID: 3045730360430571777, guid: aae2b72d47f9a1e49b26700de8fd74a4, type: 3}
+  spawnCount: 10
 --- !u!1 &2135391531
 GameObject:
   m_ObjectHideFlags: 0
