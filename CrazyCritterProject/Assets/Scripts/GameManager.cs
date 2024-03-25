@@ -1,6 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEditorInternal;
+
 using UnityEngine;
 using TMPro;
 
@@ -18,7 +16,7 @@ public class GameManager : MonoBehaviour
     public TMP_Text Nuts;
     public TMP_Text Position;
 
-    public void Awake()
+    public void Start()
     {
         float[] gm_position = new float[3];
         gm_position[1] = p_player.transform.position.x;
@@ -27,7 +25,7 @@ public class GameManager : MonoBehaviour
     }
     public void SaveData()
     {
-        /*
+        
         PlayerPrefs.SetInt("DayCount", gm_DayoftheWeek);
 
         PlayerPrefs.SetInt("Nuts", gm_Nuts);
@@ -35,7 +33,6 @@ public class GameManager : MonoBehaviour
         PlayerPrefs.SetFloat("gm_positionX", gm_position[1]);
         PlayerPrefs.SetFloat("gm_positionY", gm_position[2]);
         PlayerPrefs.SetFloat("gm_positionZ", gm_position[3]);
-        */
 
 
     }
