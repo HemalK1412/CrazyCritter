@@ -1,30 +1,24 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 using TMPro;
 
-public class TriggerEnterScript : MonoBehaviour
+public class Nuts : MonoBehaviour
 {
-    public TMP_Text scoreText;
+    SpawnObjects SpawnObjects;
 
-    public string targetTag = "Pickup";
-
-    private int score = 0;
-
-    private void OnTriggerEnter(Collider other)
+    private void OnCollisionEnter(Collision collider)
     {
-        if (other.gameObject.CompareTag(targetTag))
+        if (collider.gameObject.CompareTag("Player"))
         {
-            score++;
+            Destroy(gameObject);
+            SpawnObjects.objectsSpawned--;
 
-            scoreText.text = score.ToString();
-
-            transform.position = Newspawner.Instance.GetRandomPosition();
         }
-        else
+        if (collider.gameObject.CompareTag("Ground"))
         {
-            transform.position = Newspawner.Instance.GetRandomPosition();
+            Destroy (gameObject, 3.0f * Time.deltaTime);
+            SpawnObjects.objectsSpawned--;
         }
     }
 }

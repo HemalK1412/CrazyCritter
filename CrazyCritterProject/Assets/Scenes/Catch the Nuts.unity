@@ -793,7 +793,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1775948416}
   - component: {fileID: 1775948415}
-  - component: {fileID: 1775948417}
   - component: {fileID: 1775948418}
   m_Layer: 0
   m_Name: Spawner
@@ -832,25 +831,12 @@ Transform:
   m_GameObject: {fileID: 1775948414}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 17, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0, y: 72.4, z: 0}
+  m_LocalScale: {x: 1, y: 25.17251, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1775948417
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1775948414}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 23266084cc87e8440b074fefe80ced18, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  spawnArea: {fileID: 1775948415}
 --- !u!114 &1775948418
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -864,8 +850,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnArea: {fileID: 1775948415}
-  Nuts: {fileID: 8095593917882626314, guid: a0ccf315f029d59459b69bbdfd8063bc, type: 3}
-  spawnCount: 10
+  NutPrefab: {fileID: 8095593917882626314, guid: a0ccf315f029d59459b69bbdfd8063bc, type: 3}
+  spawnDuration: 60
+  numObjectsToSpawn: 10
+  objectsSpawned: 0
 --- !u!1 &2135391531
 GameObject:
   m_ObjectHideFlags: 0
@@ -880,7 +868,7 @@ GameObject:
   - component: {fileID: 2135391532}
   m_Layer: 0
   m_Name: Plane
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -967,7 +955,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 10, y: 10, z: 10}
+  m_LocalScale: {x: 10, y: 0.20754, z: 10}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -978,8 +966,8 @@ SceneRoots:
   m_Roots:
   - {fileID: 705507995}
   - {fileID: 2135391535}
+  - {fileID: 1689089810}
   - {fileID: 343952739}
   - {fileID: 1775948416}
   - {fileID: 830124920}
-  - {fileID: 1689089810}
   - {fileID: 845081729}

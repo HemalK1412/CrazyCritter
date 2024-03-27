@@ -2,37 +2,45 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Trial : MonoBehaviour
+public class SpawnObjects : MonoBehaviour
 {
     public Collider spawnArea;
-    public GameObject Nuts;
-    public int spawnCount = 10;
+    public GameObject NutPrefab;
 
-    // Start function
-    void FixedUpdate()
+    public float spawnDuration = 60;
+
+    public int numObjectsToSpawn = 10;
+    public int objectsSpawned = 0;
+
+    private void Update()
     {
-        if (Input.GetKey("v"))
-        {
-            Spawn();
-        }
+        StartCoroutine(SpawnNuts());
     }
 
-    // Function for spawning
-    public void Spawn()
+    private IEnumerator SpawnNuts()
     {
-        for (int i = 0; i < spawnCount; i++)
+        float elapsedTime = 0;
+
+        while (objectsSpawned < numObjectsToSpawn)
         {
+            Vector3 spawnPosition = new Vector3(
+                Random.Range(spawnArea.bounds.min.x, spawnArea.bounds.max.x),
+                Random.Range(spawnArea.bounds.min.y, spawnArea.bounds.max.y),
+                Random.Range(spawnArea.bounds.min.z, spawnArea.bounds.max.z)
+            );
 
-            Vector3 spawnPos = new Vector3();
-            spawnPos.x = Random.Range(spawnArea.bounds.min.x, spawnArea.bounds.max.x);
-            spawnPos.y = Random.Range(spawnArea.bounds.min.y, spawnArea.bounds.max.y);
-            spawnPos.z = Random.Range(spawnArea.bounds.min.z, spawnArea.bounds.max.z);
+            Instantiate(NutPrefab, spawnPosition, Random.rotation);
 
-            Instantiate(Nuts, spawnPos ,Random.rotation);
+            objectsSpawned++;
 
-            // Set object to not be a child of the spawner
-            //obj.transform.SetParent(null);
+            yield return new WaitForSeconds(0.1f);
 
+            elapsedTime += Time.deltaTime;
+
+            if (elapsedTime >= spawnDuration)
+            {
+                StopCoroutine(SpawnNuts());
+            }
         }
     }
-} 
+}
