@@ -2,11 +2,11 @@ using UnityEngine;
 
 public class Destroyer : MonoBehaviour
 {
-    private void OnTriggerEnter(Collider other)
+    SpawnerFinalized SpawnerFinalized;
+    private void OnCollisionEnter(Collision collider)
     {
-        if (other.gameObject.CompareTag("Nuts") == true)
-        {
-            Destroy(other.gameObject);
-        }
+        Destroy(collider.gameObject);
+        SpawnerFinalized.objectsSpawned--;
+        
     }
 }

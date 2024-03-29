@@ -13,8 +13,11 @@ public class SpawnObjects : MonoBehaviour
     public int objectsSpawned = 0;
 
     private void Update()
-    {
-        StartCoroutine(SpawnNuts());
+    { if (Input.GetKey("h"))
+        {
+            StartCoroutine(SpawnNuts());
+
+        }
     }
 
     private IEnumerator SpawnNuts()
