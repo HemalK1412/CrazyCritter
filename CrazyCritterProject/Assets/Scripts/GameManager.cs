@@ -19,9 +19,9 @@ public class GameManager : MonoBehaviour
     public void Start()
     {
         float[] gm_position = new float[3];
-        gm_position[1] = p_player.transform.position.x;
-        gm_position[2] = p_player.transform.position.y;
-        gm_position[3] = p_player.transform.position.z;
+        gm_position[0] = p_player.transform.position.x;
+        gm_position[1] = p_player.transform.position.y;
+        gm_position[2] = p_player.transform.position.z;
     }
     public void SaveData()
     {

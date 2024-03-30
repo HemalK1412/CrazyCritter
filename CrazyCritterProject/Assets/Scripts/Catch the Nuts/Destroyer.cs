@@ -2,11 +2,12 @@ using UnityEngine;
 
 public class Destroyer : MonoBehaviour
 {
-    SpawnerFinalized SpawnerFinalized;
+    public SpawnerFinalized SpawnerFinalized;
     private void OnCollisionEnter(Collision collider)
     {
-        Destroy(collider.gameObject);
         SpawnerFinalized.objectsSpawned--;
+
+        Destroy(collider.gameObject);
         
     }
 }
