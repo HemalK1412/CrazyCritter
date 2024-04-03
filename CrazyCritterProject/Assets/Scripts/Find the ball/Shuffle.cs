@@ -1,52 +1,28 @@
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.UIElements;
-using static UnityEngine.ParticleSystem;
 
 public class Shuffle : MonoBehaviour
 {
     [SerializeField] Transform[] defaults;
-    [SerializeField] float lerpmultiplier;
     public GameObject[] cups;
 
 
-    // To be grabbed form the GameManager(SaveSyatem)
-    public int NoofDays;
     public int first, second;
 
+    [SerializeField] float lerpmultiplier, NoofDays;
 
-    private Vector3 firstCupPosition, secondCupPosition;
+    private Vector3 firstCupPosition, secondCupPosition, median, perpendicular;
     private bool shufflestart;
-    int[] DefaultLength;
 
-    Vector3 median, perpendicular;
-    
     private void Start()
     {
         ResetPositions();
-        //List<int> DefaultLength = GenerateIntegerList(0, defaults.Length);
     }
 
     private void Update()
     {
         if (Input.GetKeyDown("a"))
         {
-
-            //List<int> Locations = ShuffleList(DefaultLength);
-
-            /*
-            for (int j = 0; j < NoofDays; j++)
-            {
-                for(int k = 0;k < defaults.Length; k++)
-                {
-                    cups[k].transform.position = Vector3.Lerp(cups[k].transform.position, defaults[j].transform.position, lerpmultiplier);
-
-                    cups[j].transform.position = Vector3.Lerp(cups[j].transform.position, defaults[k].transform.position, lerpmultiplier);
-                }
-
-            }
-            */
 
             shufflestart = true;
 
@@ -95,29 +71,6 @@ public class Shuffle : MonoBehaviour
         }
     }
 
-
-    /*
-    public List<int> ShuffleList(List<int> list)
-    {
-        for (int i = list.Count - 1; i > 0; i--)
-        {
-            int j = UnityEngine.Random.Range(0, i + 1);
-            int temp = list[i];
-            list[i] = list[j];
-            list[j] = temp;
-        }
-        return list;
-    }
-    public List<int> GenerateIntegerList(int min, int max)
-    {
-        List<int> list = new List<int>();
-        for (int i = min; i <= max; i++)
-        {
-            list.Add(i);
-        }
-        return list;
-    }
-    */
     Vector3 EvaluateSlerpPoints(Vector3 start, Vector3 end, Vector3 center)
     {
         var startRelativeCenter = start - center;
