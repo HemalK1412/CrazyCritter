@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 8090840820821014583}
   - component: {fileID: 1083250726439260386}
   - component: {fileID: 7411654093416815171}
-  - component: {fileID: 3233524396381733746}
+  - component: {fileID: 5349331172749743370}
   m_Layer: 0
   m_Name: MainCharacter
   m_TagString: Player
@@ -152,7 +152,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 25
   turnSpeed: 50
---- !u!114 &3233524396381733746
+--- !u!114 &5349331172749743370
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -161,9 +161,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 398971728160785299}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5aaa70c4a93b8ca4584c8ac65087439a, type: 3}
+  m_Script: {fileID: 11500000, guid: 0ec2ab113044bca4d81f226711d66c38, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  MyStats:
+    DayCount: 0
+    Nuts: 0
+    powerups: 0
 --- !u!1 &4454112428349400959
 GameObject:
   m_ObjectHideFlags: 0
