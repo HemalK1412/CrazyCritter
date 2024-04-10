@@ -136,7 +136,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 80
+  m_Constraints: 112
   m_CollisionDetection: 0
 --- !u!114 &7411654093416815171
 MonoBehaviour:
@@ -167,7 +167,11 @@ MonoBehaviour:
   MyStats:
     DayCount: 0
     Nuts: 0
-    powerups: 0
+    _pPosition:
+      x: 0
+      y: 0
+      z: 0
+    Speedpowerups: 0
 --- !u!1 &4454112428349400959
 GameObject:
   m_ObjectHideFlags: 0

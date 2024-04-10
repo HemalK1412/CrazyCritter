@@ -5,8 +5,8 @@ using UnityEngine.UI;
 
 public class CasinoFloorUI : MonoBehaviour
 {
-
-    public GameObject GameManager;
+    public GameObject p_Player;
+    Rigidbody p_Rigidbody;
 
 
     [SerializeField] Button InitialStart;
@@ -15,9 +15,9 @@ public class CasinoFloorUI : MonoBehaviour
 
 
     [SerializeField] Canvas InitialStartCanvas;
-    [SerializeField] Canvas PauseScreen;
+    [SerializeField] Canvas PauseCanvas;
 
-    SaveManager SaveManager;
+    public SaveManager SaveManager;
 
 
 
@@ -25,6 +25,9 @@ public class CasinoFloorUI : MonoBehaviour
     private void Awake()
     {
         Time.timeScale = 0f;
+        p_Player = GameObject.FindGameObjectWithTag("Player");
+        p_Rigidbody = p_Player.GetComponent<Rigidbody>();
+        p_Rigidbody.isKinematic = false;
 
     }
 
@@ -38,6 +41,8 @@ public class CasinoFloorUI : MonoBehaviour
     {
         InitialStartCanvas.gameObject.SetActive(false);
         Time.timeScale = 1f;
+
+        p_Rigidbody.isKinematic = true;
         Cursor.lockState = CursorLockMode.Locked;
     }
 
@@ -46,25 +51,28 @@ public class CasinoFloorUI : MonoBehaviour
 
     public void FixedUpdate()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.Space))
         {
-            PauseScreen.gameObject.SetActive(true);
+            PauseCanvas.gameObject.SetActive(true);
 
+            p_Rigidbody.isKinematic = false;
             Cursor.lockState = CursorLockMode.None;
             Time.timeScale = 0f;
         }
     }
     public void ResumeButtonPressed()
     {
-        PauseScreen.gameObject.SetActive(false);
+        PauseCanvas.gameObject.SetActive(false);
+
+        p_Rigidbody.isKinematic = true;
         Time.timeScale = 1f;
     }
 
-    /*
+    
     private void OnDestroy()
     {
         SaveManager.Save();
     }
-    */
+    
 
 }
