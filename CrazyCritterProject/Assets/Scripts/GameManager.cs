@@ -1,52 +1,122 @@
 using UnityEngine;
 using TMPro;
-using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
 
-    [SerializeField] int gm_DayoftheWeek;
-    [SerializeField] int gm_Nuts;
-    [SerializeField] float[] gm_position;
-    TMP_Text Daycount;
-    TMP_Text Nuts;
-    TMP_Text Position;
+
+    public int TargetScore = 100; //To be confirmed
 
 
+    public int gm_DayoftheWeek = 0;
+    public int gm_MinigamesCompleted = 0;
+    public int gm_Nuts;
+    public Vector3 Bouncer_position;
 
-    GameObject p_Player;
-    Rigidbody p_Rigidbody;
 
-    public Canvas InitialStartCanvas;
-    [SerializeField] Canvas PauseCanvas;
+    public bool SpeedpowerUP;
 
+
+    public GameObject Bouncer;
+    public GameObject p_Player;
+    public Rigidbody p_Rigidbody;
+
+
+    public bool isPaused;
+    public GameObject PauseCanvas;
 
     private void Awake()
     {
 
         p_Player = GameObject.FindGameObjectWithTag("Player");
+        if (p_Player == null) return;
         p_Rigidbody = p_Player.GetComponent<Rigidbody>();
     }
 
 
     public void Start()
     {
-
+        if (PauseCanvas == null) return;
+        PauseCanvas.SetActive(false);
+        PauseGame();
     }
 
-    public void FixedUpdate()
+    public void Update()
     {
+        /*
+        if (isPaused == true)
+        {
+            PauseGame();
+        }
+        else
+        {
+            ResumeGame();
+        }
+        */
 
+        Bouncer_position = Bouncer.transform.position;
+
+        if(Input.GetKeyDown(KeyCode.Escape))
+        {
+            if (PauseCanvas == null) return;
+            PauseCanvas.gameObject.SetActive(true);
+            PauseGame();
+        }
     }
 
-
-    public void InitialStartButtonPressed()
+    public void PauseGame()
     {
-        InitialStartCanvas.gameObject.SetActive(false);
-        Time.timeScale = 1f;
+        if (p_Rigidbody == null) return;
+        p_Rigidbody.isKinematic = false;
+        //p_Player.SetActive(false);
+        isPaused = true;
 
+
+        Time.timeScale = 0f;
+        Cursor.lockState = CursorLockMode.None;
+    }
+
+    public void ResumeGame()
+    {
+        if (p_Rigidbody == null) return;
         p_Rigidbody.isKinematic = true;
+        //p_Player.SetActive(true);
+        
+        isPaused = false;
+        Time.timeScale = 1f;
         Cursor.lockState = CursorLockMode.Locked;
     }
 
+    
+
+    void MinigamesUpdate()
+    {
+        gm_MinigamesCompleted++;
+        if (gm_MinigamesCompleted == 2)
+        {
+            gm_DayoftheWeek++;
+            gm_MinigamesCompleted = 0;
+        }
+    }
+
+
+    void GameOver()
+    {
+        if(gm_DayoftheWeek == 6)
+        {
+            if (gm_Nuts >= TargetScore)
+            {
+                //Win cutscene
+            }
+            else
+            {
+                //Lose cutscene
+
+                //Restart the game
+            }
+        }
+    }
+
+
 }
+

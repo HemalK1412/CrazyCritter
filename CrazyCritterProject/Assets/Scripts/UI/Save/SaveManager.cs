@@ -5,6 +5,10 @@ using System.Runtime.Serialization;
 
 public class SaveManager : MonoBehaviour
 {
+
+    //Placed along with the GameManager so will incorporate the DontDestroyOnLoad()
+
+
     private player player;
 
     private void Awake()

@@ -17,8 +17,12 @@ public class Stats
     public int DayCount;
     public int Nuts;
 
-    public SerializableVector3 _pPosition;
+    public int MinigamesCompleted;
+
+    public SerializableVector3 p_Position;
+    public SerializableVector3 Bouncer_Position;
 
     // If any power ups have been collected. Check for variable == true and enable the powerup
     public bool Speedpowerups;
+    
 }

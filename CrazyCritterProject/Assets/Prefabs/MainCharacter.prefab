@@ -164,6 +164,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ec2ab113044bca4d81f226711d66c38, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  GameManager: {fileID: 8532306501996128986, guid: f8edb76fe0c4ed64db478e5bd4f95bc2, type: 3}
   MyStats:
     DayCount: 0
     Nuts: 0

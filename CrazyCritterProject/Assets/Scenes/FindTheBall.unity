@@ -846,14 +846,16 @@ MonoBehaviour:
   - {fileID: 75057214}
   - {fileID: 1131694648}
   - {fileID: 1686379742}
-  lerpmultiplier: 10
   cups:
   - {fileID: 959381188}
   - {fileID: 1990748545}
   - {fileID: 1956515812}
-  NoofDays: 5
+  NoofShuffles: 3
   first: 0
   second: 1
+  lerpmultiplier: 10
+  NoofDays: 5
+  ShuffleDuration: 2
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
