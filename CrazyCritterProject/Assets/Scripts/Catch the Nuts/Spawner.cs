@@ -1,22 +1,22 @@
 using UnityEngine;
 
-public class SpawnerFinalized : MonoBehaviour
+public class Spawner : MonoBehaviour
 {
     public Collider spawnArea;
     public GameObject Nutprefab;
 
     public int numObjectsToSpawn = 10;
-    public int objectsSpawned = 0;
+    public int NutsSpawned = 0;
 
-    private void FixedUpdate()
+    private void Update()
     {
         //objectsSpawned = GameObject.FindObjectsOfType<Nuts>().Length;
-        if (objectsSpawned <= numObjectsToSpawn)
+        if (NutsSpawned <= numObjectsToSpawn)
         {
             Vector3 SpawnPosition = GetRandomPosition();
 
             Instantiate(Nutprefab, SpawnPosition, Random.rotation);
-            objectsSpawned ++;
+            NutsSpawned ++;
         }
     }
 
