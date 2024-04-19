@@ -14,7 +14,7 @@ public class CatchTheNutsScoreKeeper : MonoBehaviour
         if (collision.gameObject.CompareTag("Nuts"))
         {
             score++;
-            text.text = score.ToString();
+            text.text = "Score: " + score.ToString();
             Destroy(collision.gameObject);
         }
     }
