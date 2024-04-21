@@ -7,13 +7,7 @@ public class GameManager : MonoBehaviour
 
     public int TargetScore = 100; //To be confirmed
 
-
-    public int gm_DayoftheWeek = 1;
-    public int gm_MinigamesCompleted = 0;
-    public int gm_Nuts;
-    public Vector3 Bouncer_position;
-
-
+    
     public bool SpeedpowerUP;
 
 
@@ -86,37 +80,6 @@ public class GameManager : MonoBehaviour
         Time.timeScale = 1f;
         Cursor.lockState = CursorLockMode.Locked;
     }
-
-    
-
-    void MinigamesUpdate()
-    {
-        gm_MinigamesCompleted++;
-        if (gm_MinigamesCompleted == 2)
-        {
-            gm_DayoftheWeek++;
-            gm_MinigamesCompleted = 0;
-        }
-    }
-
-
-    void GameOver()
-    {
-        if(gm_DayoftheWeek == 6)
-        {
-            if (gm_Nuts >= TargetScore)
-            {
-                //Win cutscene
-            }
-            else
-            {
-                //Lose cutscene
-
-                //Restart the game
-            }
-        }
-    }
-
 
 }
 
