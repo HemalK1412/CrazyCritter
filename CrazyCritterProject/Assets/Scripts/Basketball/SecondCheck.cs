@@ -5,6 +5,7 @@ public class SecondCheck : MonoBehaviour
 {
 	Collider expectedCollider;
     BasketMove basketMove;
+    ScoreDisplay scoreDisplay;
 
 	public void ExpectCollider(Collider collider)
     {
@@ -15,10 +16,10 @@ public class SecondCheck : MonoBehaviour
     {
         if (otherCollider == expectedCollider)
         {
-    		//Increment scores
-            ScoreKeeper scoreKeeper = FindObjectOfType<ScoreKeeper>();
-    		scoreKeeper.IncrementScore();
+            //Increment scores
+
             basketMove.ChangeRingLocation();
+            scoreDisplay.Score++;
 		}
 	}
 }

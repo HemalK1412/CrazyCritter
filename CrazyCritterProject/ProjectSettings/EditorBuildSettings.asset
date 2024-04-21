@@ -6,9 +6,18 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/StartScreen.unity
+    guid: 795e8e3b3dcb84240a9d563204386e08
+  - enabled: 1
     path: Assets/Scenes/Casino.unity
     guid: 675a939aed02bd84590cd01ac4551baf
   - enabled: 1
     path: Assets/Scenes/Catch the Nuts.unity
     guid: 9fc0d4010bbf28b4594072e72b8655ab
+  - enabled: 1
+    path: Assets/Scenes/FindTheBall.unity
+    guid: 27f952869ba53db4babaacc42c216654
+  - enabled: 1
+    path: Assets/Scenes/Basketball.unity
+    guid: 12436a55652893b4dbd40bdac4fc486a
   m_configObjects: {}

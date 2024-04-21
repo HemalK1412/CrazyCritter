@@ -4,16 +4,17 @@ using TMPro;
 
 public class ScoreDisplay : MonoBehaviour 
 {
-	ScoreKeeper scoreKeeper;
     public TextMeshProUGUI ScoreHUD;
+	public int Score = 0;
 
 	void Start ()
 	{
-		scoreKeeper = FindObjectOfType<ScoreKeeper>();
 	}
 	
 	void Update ()
 	{
-		ScoreHUD.text = "Score: " + scoreKeeper.score.ToString();
+		ScoreHUD.text = "Score: " + Score.ToString();
 	}
+
+	
 }

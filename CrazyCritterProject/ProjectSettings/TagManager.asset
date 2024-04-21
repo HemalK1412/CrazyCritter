@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Nuts
   - Ground
+  - Selectable
   layers:
   - Default
   - TransparentFX

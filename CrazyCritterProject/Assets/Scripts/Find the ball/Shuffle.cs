@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class Shuffle : MonoBehaviour
 {
-
     [SerializeField] Transform[] defaults;
     public GameObject[] cups;
 
@@ -21,18 +20,18 @@ public class Shuffle : MonoBehaviour
     private Vector3 midpoint;
     private Vector3 perpendicular;
 
+    FindTheNutManager FindTheNutManager;
 
     private void Start()
     {
-        ResetPositions();
+        //ResetPositions();
     }
 
     private void Update()
     {
+        /*
         if (Input.GetKeyDown("a"))
         {
-
-
             //CupstoShuffle();
 
             StartCoroutine(BaseShuffle());
@@ -40,7 +39,10 @@ public class Shuffle : MonoBehaviour
             //StartCoroutine(ShuffleOnce());
             //midpoint = firstCupPosition + (secondCupPosition - firstCupPosition) / 2;
         }
-        
+        */
+
+        // Below part stays off.
+
         /*
         if (shufflestart)
         {
@@ -55,47 +57,35 @@ public class Shuffle : MonoBehaviour
         */
     }
 
-
+    /*
     private void ResetPositions()
     {
         for (int i = 0; i < cups.Length; i++)
         {
             cups[i].transform.position = defaults[i].transform.position;
         }
-    }
-
-    private void OnDrawGizmos()
-    {
-        Gizmos.color = Color.black;
-        Gizmos.DrawLine(firstCupPosition, midpoint);
-
-        Gizmos.color = Color.red;
-        Gizmos.DrawLine(midpoint, midpoint + perpendicular);
-    }
-
-
-    private void CupstoShuffle()
-    {
-        List<int> DefaultLength = new List<int>() { 0, 1, 2 };
-
-        first = DefaultLength[Random.Range(0, DefaultLength.Count)];
-        DefaultLength.Remove(first);
-        second = DefaultLength[Random.Range(0, DefaultLength.Count)];
-
-        firstCupPosition = cups[first].transform.position;
-        secondCupPosition = cups[second].transform.position;
 
     }
-
-
-    Vector3 EvaluateSlerpPoints(Vector3 start, Vector3 end, Vector3 center, float t)
-    {
-        var startRelativeCenter = start - center;
-        var endRelativeCenter = end - center;
-        
-        return Vector3.Slerp(startRelativeCenter, endRelativeCenter, t) + center;
-    }
+    */
     
+    /*
+    public void StartShuffle(int DayCount)
+    {
+        StartCoroutine (BaseShuffle(DayCount));
+
+    }
+    */
+
+    public IEnumerator BaseShuffle(int DayCount)
+    {
+        for (int i = 0; i < NoofShuffles * DayCount; i++)
+        {
+            StartCoroutine(ShuffleOnce());
+            yield return new WaitForSeconds(ShuffleDuration);
+        }
+        FindTheNutManager.GameStage = 3;
+    }
+
     IEnumerator ShuffleOnce()
     {
         CupstoShuffle();
@@ -110,11 +100,11 @@ public class Shuffle : MonoBehaviour
         while (t <= ShuffleDuration)
         {
             t += Time.deltaTime;
-            Debug.Log("t = " + t/ShuffleDuration);
-            
-            cups[first].transform.position = EvaluateSlerpPoints(cup1, secondCupPosition, midpoint - perpendicular, t/ShuffleDuration);
-            cups[second].transform.position = EvaluateSlerpPoints(cup2, firstCupPosition, midpoint + perpendicular, t/ShuffleDuration);
-            
+            Debug.Log("t = " + t / ShuffleDuration);
+
+            cups[first].transform.position = EvaluateSlerpPoints(cup1, secondCupPosition, midpoint - perpendicular, t / ShuffleDuration);
+            cups[second].transform.position = EvaluateSlerpPoints(cup2, firstCupPosition, midpoint + perpendicular, t / ShuffleDuration);
+
             /*
             cups[first].transform.position = Vector3.Lerp(cup1, secondCupPosition, t / ShuffleDuration);
             cups[second].transform.position = Vector3.Lerp(cup2, firstCupPosition, t / ShuffleDuration);
@@ -129,13 +119,32 @@ public class Shuffle : MonoBehaviour
         */
     }
 
-    IEnumerator BaseShuffle()
+    private void CupstoShuffle()
     {
-        for (int i = 0; i < NoofShuffles; i++)
-        {
-            StartCoroutine(ShuffleOnce());
-            yield return new WaitForSeconds(ShuffleDuration);
-        }
+        List<int> DefaultLength = new List<int>() { 0, 1, 2 };
+
+        first = DefaultLength[Random.Range(0, DefaultLength.Count)];
+        DefaultLength.Remove(first);
+        second = DefaultLength[Random.Range(0, DefaultLength.Count)];
+
+        firstCupPosition = cups[first].transform.position;
+        secondCupPosition = cups[second].transform.position;
     }
 
+    Vector3 EvaluateSlerpPoints(Vector3 start, Vector3 end, Vector3 center, float t)
+    {
+        var startRelativeCenter = start - center;
+        var endRelativeCenter = end - center;
+
+        return Vector3.Slerp(startRelativeCenter, endRelativeCenter, t) + center;
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.black;
+        Gizmos.DrawLine(firstCupPosition, midpoint);
+
+        Gizmos.color = Color.red;
+        Gizmos.DrawLine(midpoint, midpoint + perpendicular);
+    }
 }

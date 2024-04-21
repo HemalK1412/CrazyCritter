@@ -1839,7 +1839,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnArea: {fileID: 1775948415}
-  Nutprefab: {fileID: 8095593917882626314, guid: a0ccf315f029d59459b69bbdfd8063bc, type: 3}
+  Nutprefab: {fileID: 9072727584408730725, guid: 860866c1f1822f644bea413613c65f13, type: 3}
   numObjectsToSpawn: 10
   NutsSpawned: 0
 --- !u!1 &1897266401
@@ -2242,7 +2242,7 @@ GameObject:
   - component: {fileID: 2147433772}
   - component: {fileID: 2147433771}
   m_Layer: 0
-  m_Name: Minigame Manger
+  m_Name: CatchtheNutsManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

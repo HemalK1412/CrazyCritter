@@ -8,7 +8,7 @@ public class GameManager : MonoBehaviour
     public int TargetScore = 100; //To be confirmed
 
 
-    public int gm_DayoftheWeek = 0;
+    public int gm_DayoftheWeek = 1;
     public int gm_MinigamesCompleted = 0;
     public int gm_Nuts;
     public Vector3 Bouncer_position;
@@ -54,7 +54,7 @@ public class GameManager : MonoBehaviour
         }
         */
 
-        Bouncer_position = Bouncer.transform.position;
+        //Bouncer_position = Bouncer.transform.position;
 
         if(Input.GetKeyDown(KeyCode.Escape))
         {

@@ -1,4 +1,6 @@
+using UnityEditor.SearchService;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class CatchTheNutsManager : MonoBehaviour
 {
@@ -14,13 +16,12 @@ public class CatchTheNutsManager : MonoBehaviour
     public GameObject Timer;
 
     MiniGamestimer miniGamestimer;
-    CatchTheNutsScoreKeeper catchTheNutsScoreKeeper;
-   
+    NutParent NutParent;
+    SaveManager saveManager;
     
 
     void Awake()
     {
-
         miniGamestimer = FindAnyObjectByType<MiniGamestimer>();
 
         MiniGameHUD.gameObject.SetActive(false);
@@ -32,18 +33,14 @@ public class CatchTheNutsManager : MonoBehaviour
         
         Cursor.lockState = CursorLockMode.None;
 
-
         p_player = GameObject.FindGameObjectWithTag("Player");
         if (p_player == null) return;
         p_Rigidbody = p_player.GetComponent<Rigidbody>();
         p_Rigidbody.isKinematic = false;
-
-
     }
 
     private void FixedUpdate()
     {
-
         if(miniGamestimer.remainingTime <= 0)
         {
             Debug.Log("Time Skipped");
@@ -54,11 +51,9 @@ public class CatchTheNutsManager : MonoBehaviour
 
     public void MiniGameStartButtonPressed()
     {
-
         MiniGameStartCanvas.gameObject.SetActive(false);
         MiniGameHUD.gameObject.SetActive(true);
         Cursor.lockState = CursorLockMode.Locked;
-
 
         p_Rigidbody.isKinematic = true;
         MG_Spawner.SetActive(true);
@@ -70,14 +65,17 @@ public class CatchTheNutsManager : MonoBehaviour
         MG_Destroyer.SetActive(false);
         MG_Spawner.SetActive(false);
 
-
         p_Rigidbody.isKinematic = false;
 
         MiniGameHUD.gameObject.SetActive(false);
-        MiniGameStartCanvas.gameObject.SetActive(false);
         MiniGameEndCanvas.gameObject.SetActive(true);
 
-
         //get the score to the Game manager and save it.
+    }
+
+    public void MiniGameEndContinuePressed()
+    {
+        //saveManager.Save();
+        SceneManager.LoadScene("Casino");
     }
 }
