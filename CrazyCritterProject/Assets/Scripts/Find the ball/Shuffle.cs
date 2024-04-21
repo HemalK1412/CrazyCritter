@@ -6,6 +6,7 @@ public class Shuffle : MonoBehaviour
 {
     [SerializeField] Transform[] defaults;
     public GameObject[] cups;
+    public GameObject Player;
 
     public int NoofShuffles = 3;
     public int first;
@@ -21,6 +22,7 @@ public class Shuffle : MonoBehaviour
     private Vector3 perpendicular;
 
     FindTheNutManager FindTheNutManager;
+
 
     private void Start()
     {
@@ -83,7 +85,7 @@ public class Shuffle : MonoBehaviour
             StartCoroutine(ShuffleOnce());
             yield return new WaitForSeconds(ShuffleDuration);
         }
-        FindTheNutManager.GameStage = 3;
+        Player.GetComponent<Selection>().enabled = true;
     }
 
     IEnumerator ShuffleOnce()
@@ -100,7 +102,6 @@ public class Shuffle : MonoBehaviour
         while (t <= ShuffleDuration)
         {
             t += Time.deltaTime;
-            Debug.Log("t = " + t / ShuffleDuration);
 
             cups[first].transform.position = EvaluateSlerpPoints(cup1, secondCupPosition, midpoint - perpendicular, t / ShuffleDuration);
             cups[second].transform.position = EvaluateSlerpPoints(cup2, firstCupPosition, midpoint + perpendicular, t / ShuffleDuration);

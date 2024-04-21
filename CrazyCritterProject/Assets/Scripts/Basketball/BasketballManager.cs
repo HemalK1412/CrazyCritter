@@ -37,7 +37,7 @@ public class BasketballManager : MonoBehaviour
     private void FixedUpdate()
     {
 
-        if (miniGamestimer.remainingTime <= 0)
+        if (miniGamestimer.remainingTime <= 55)
         {
             MiniGameEnd();
         }

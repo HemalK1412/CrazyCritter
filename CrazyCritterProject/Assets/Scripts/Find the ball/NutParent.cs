@@ -9,7 +9,7 @@ public class NutParent : MonoBehaviour
 
     public void ParentToCup()
     {
-        Nut.transform.SetParent(ParentCup.transform);
+        Nut.transform.SetParent(ParentCup.transform, worldPositionStays: true);
     }
 
 }

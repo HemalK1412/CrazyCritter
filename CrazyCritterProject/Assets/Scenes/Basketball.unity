@@ -1562,8 +1562,6 @@ MonoBehaviour:
   BasketballMiniGameHUD: {fileID: 229147999}
   BasketballMiniGameEndCanvas: {fileID: 777063000}
   p_player: {fileID: 0}
-  p_cameraRotation: {fileID: 0}
-  p_BallLauncher: {fileID: 0}
 --- !u!1 &1058898873
 GameObject:
   m_ObjectHideFlags: 0
@@ -2242,6 +2240,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 41fc08a45a7d7b24aa170ba57db9f1b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  scoreDisplay: {fileID: 563097212}
 --- !u!1 &1826164635
 GameObject:
   m_ObjectHideFlags: 0

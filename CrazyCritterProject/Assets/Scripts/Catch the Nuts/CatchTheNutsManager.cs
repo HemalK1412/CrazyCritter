@@ -41,7 +41,7 @@ public class CatchTheNutsManager : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if(miniGamestimer.remainingTime <= 0)
+        if(miniGamestimer.remainingTime <= 55)
         {
             Debug.Log("Time Skipped");
             MiniGameEnd();
@@ -64,7 +64,9 @@ public class CatchTheNutsManager : MonoBehaviour
     {
         MG_Destroyer.SetActive(false);
         MG_Spawner.SetActive(false);
-
+        
+        Cursor.lockState = CursorLockMode.None;
+        
         p_Rigidbody.isKinematic = false;
 
         MiniGameHUD.gameObject.SetActive(false);
