@@ -27,8 +27,8 @@ public class FindTheNutManager : MonoBehaviour
 
         Player.GetComponent<Selection>().enabled = false;
         Cursor.lockState = CursorLockMode.None;
-        if (gameManager == null) return;
-        BaseShuffleMultiplier = gameManager.gm_DayoftheWeek;
+        //if (gameManager == null) return;
+        //BaseShuffleMultiplier = gameManager.gm_DayoftheWeek;
     }
 
     void Start()

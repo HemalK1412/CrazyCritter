@@ -12,7 +12,7 @@ public class player : MonoBehaviour
 
     public Stats MyStats;
 
-    private void FixedUpdate()
+    /*private void FixedUpdate()
     {
         //Does this need to be in Fixed Update
 
@@ -33,7 +33,7 @@ public class player : MonoBehaviour
         MyStats.Bouncer_Position.y = GameManager.Bouncer_position.y;
         MyStats.Bouncer_Position.z = GameManager.Bouncer_position.z;
 
-    }
+    }*/
 
     /*
     public void SerializableVector3(Vector3 p_Position)
