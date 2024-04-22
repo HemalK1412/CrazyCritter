@@ -7,10 +7,6 @@ public class GameManager : MonoBehaviour
 
     public int TargetScore = 100; //To be confirmed
 
-    
-    public bool SpeedpowerUP;
-
-
     public GameObject Bouncer;
     public GameObject p_Player;
     public Rigidbody p_Rigidbody;

@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: -9155416348167103763}
   m_Layer: 0
   m_Name: Nut
-  m_TagString: Untagged
+  m_TagString: Nuts
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

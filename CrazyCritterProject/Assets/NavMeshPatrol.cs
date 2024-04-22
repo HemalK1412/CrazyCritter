@@ -1,0 +1,31 @@
+using UnityEngine;
+using UnityEngine.AI;
+
+public class NavMeshPatrol : MonoBehaviour
+{
+    public Transform[] waypoints;
+    private int currentWaypoint = 0;
+
+    private NavMeshAgent agent;
+
+    void Start()
+    {
+        agent = gameObject.GetComponent<NavMeshAgent>();
+        agent.destination = waypoints[currentWaypoint].position;
+    }
+
+    void Update()
+    {
+        if (agent.remainingDistance < 0.5f)
+        {
+            currentWaypoint++;
+
+            if (currentWaypoint >= waypoints.Length)
+            {
+                currentWaypoint = 0;
+            }
+
+            agent.destination = waypoints[currentWaypoint].position;
+        }
+    }
+}
