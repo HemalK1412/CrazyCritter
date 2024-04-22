@@ -26,12 +26,7 @@ public class SmoothControl : MonoBehaviour
     {
         rb.isKinematic = true;
     }
-
-    void Start()
-    {
-
-    }
-
+    
     void Update()
     {
         horizontalAxisValue = Input.GetAxisRaw("Horizontal");
@@ -46,8 +41,8 @@ public class SmoothControl : MonoBehaviour
 
     void Move()
     {
-        Vector3 movement = transform.forward * verticalAxisValue * speed * Time.deltaTime;
-        rb.MovePosition(rb.position + movement);
+        Vector3 movementDir = transform.forward * (verticalAxisValue * speed);
+        rb.velocity = new Vector3(movementDir.x, rb.velocity.y, movementDir.z);
     }
 
     void Turn()

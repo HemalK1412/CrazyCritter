@@ -24,14 +24,14 @@ public class StartScreenUI : MonoBehaviour
 
 
 
-    private void Awake()
+    /*private void Awake()
     {
         //SaveManager.Load();
         DayCount.text = ("DayCount : " + Stats.DayCount);
         NutCount.text = ("NutCount : " + Stats.Nuts);
         Position.text = ("Position : " + Stats.p_Position.x + "," + Stats.p_Position.y + "," + Stats.p_Position.z);
 
-    }
+    }*/
 
     // Debug End
 
