@@ -9,6 +9,8 @@ public class Stats
     public float Volume;
     public float Sfx_volume;
 
+    public int ColorBlindEnum;
+
     //maybe
     public float mouse_Sens;
 }
