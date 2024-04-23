@@ -9,7 +9,7 @@ public class MiniGameLoader : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            Debug.Log("Scene Switch");
+            Debug.Log("Scene Switch to : " + MiniGameScene);
             SceneManager.LoadScene(MiniGameScene);
         }
     }

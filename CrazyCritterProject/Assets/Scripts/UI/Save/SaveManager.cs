@@ -5,16 +5,11 @@ using System.Runtime.Serialization;
 
 public class SaveManager : MonoBehaviour
 {
-
-    //Placed along with the GameManager so will incorporate the DontDestroyOnLoad()
-
-
-    private player player;
+    private DataBank databank;
 
     private void Awake()
     {
-        player = GameObject.FindAnyObjectByType<player>();
-        Load();
+        databank = GameObject.FindAnyObjectByType<DataBank>();
     }
 
     public void Save()
@@ -26,7 +21,7 @@ public class SaveManager : MonoBehaviour
         try
         {
             BinaryFormatter formatter = new BinaryFormatter();
-            formatter.Serialize(file, player.MyStats);
+            formatter.Serialize(file, databank.MyStats);
         }
 
         catch (SerializationException error)
@@ -42,21 +37,29 @@ public class SaveManager : MonoBehaviour
 
     public void Load()
     {
-        FileStream file = new FileStream(Application.persistentDataPath + "/CrazyCritters.dat", FileMode.Open);
 
-        try
+        string filepath = Application.persistentDataPath + "/CrazyCritters.dat";
+        if (File.Exists(filepath))
         {
-            BinaryFormatter formatter = new BinaryFormatter();
-            player.MyStats = (Stats)formatter.Deserialize(file);
-        }
-        catch (SerializationException error)
-        {
-            Debug.LogError("Error with deserializing data: " + error.Message);
-        }
-        finally
-        {
-            file.Close();
-        }
+            FileStream file = new FileStream(Application.persistentDataPath + "/CrazyCritters.dat", FileMode.Open);
 
+            try
+            {
+                BinaryFormatter formatter = new BinaryFormatter();
+                databank.MyStats = (Stats)formatter.Deserialize(file);
+            }
+            catch (SerializationException error)
+            {
+                Debug.LogError("Error with deserializing data: " + error.Message);
+            }
+            finally
+            {
+                file.Close();
+            }
+        }
+        else
+        {
+            Debug.Log("Save file does not exist");
+        }
     }
 }
