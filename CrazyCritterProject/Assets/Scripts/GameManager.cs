@@ -7,13 +7,13 @@ public class GameManager : MonoBehaviour
 
     public int TargetScore = 100; //To be confirmed
 
-    public GameObject Bouncer;
     public GameObject p_Player;
     public Rigidbody p_Rigidbody;
 
-
+    DataBank p_DataBank;
     public bool isPaused;
     public GameObject PauseCanvas;
+    public GameObject HUD;
 
     private void Awake()
     {
@@ -44,8 +44,6 @@ public class GameManager : MonoBehaviour
         }
         */
 
-        //Bouncer_position = Bouncer.transform.position;
-
         if(Input.GetKeyDown(KeyCode.Escape))
         {
             if (PauseCanvas == null) return;
@@ -58,7 +56,6 @@ public class GameManager : MonoBehaviour
     {
         if (p_Rigidbody == null) return;
         p_Rigidbody.isKinematic = false;
-        //p_Player.SetActive(false);
         isPaused = true;
 
 
@@ -70,7 +67,6 @@ public class GameManager : MonoBehaviour
     {
         if (p_Rigidbody == null) return;
         p_Rigidbody.isKinematic = true;
-        //p_Player.SetActive(true);
         
         isPaused = false;
         Time.timeScale = 1f;

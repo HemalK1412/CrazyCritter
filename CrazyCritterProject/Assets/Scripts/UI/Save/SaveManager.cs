@@ -5,7 +5,6 @@ using System.Runtime.Serialization;
 
 public class SaveManager : MonoBehaviour
 {
-    
     private DataBank databank;
 
     private void Awake()
@@ -38,21 +37,29 @@ public class SaveManager : MonoBehaviour
 
     public void Load()
     {
-        FileStream file = new FileStream(Application.persistentDataPath + "/CrazyCritters.dat", FileMode.Open);
 
-        try
+        string filepath = Application.persistentDataPath + "/CrazyCritters.dat";
+        if (File.Exists(filepath))
         {
-            BinaryFormatter formatter = new BinaryFormatter();
-            databank.MyStats = (Stats)formatter.Deserialize(file);
-        }
-        catch (SerializationException error)
-        {
-            Debug.LogError("Error with deserializing data: " + error.Message);
-        }
-        finally
-        {
-            file.Close();
-        }
+            FileStream file = new FileStream(Application.persistentDataPath + "/CrazyCritters.dat", FileMode.Open);
 
+            try
+            {
+                BinaryFormatter formatter = new BinaryFormatter();
+                databank.MyStats = (Stats)formatter.Deserialize(file);
+            }
+            catch (SerializationException error)
+            {
+                Debug.LogError("Error with deserializing data: " + error.Message);
+            }
+            finally
+            {
+                file.Close();
+            }
+        }
+        else
+        {
+            Debug.Log("Save file does not exist");
+        }
     }
 }
