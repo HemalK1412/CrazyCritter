@@ -17,6 +17,7 @@ public class SmoothControl : MonoBehaviour
         rb = GetComponent<Rigidbody>();
     }
 
+    /*
     private void OnEnable()
     {
         rb.isKinematic = false;
@@ -26,6 +27,7 @@ public class SmoothControl : MonoBehaviour
     {
         rb.isKinematic = true;
     }
+    */
     
     void Update()
     {

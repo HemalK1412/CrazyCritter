@@ -82,7 +82,7 @@ public class GameManager : MonoBehaviour
     public void ResumeGame()
     {
         if (p_Rigidbody == null) return;
-        p_Rigidbody.isKinematic = true;
+        //p_Rigidbody.isKinematic = true;
         //p_Player.SetActive(true);
         
         isPaused = false;

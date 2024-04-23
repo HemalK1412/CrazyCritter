@@ -27,6 +27,7 @@ public class DataBank : MonoBehaviour
     private void Start()
     {
         SaveManager = FindAnyObjectByType<SaveManager>();
+        if(SaveManager == null)return;
         SaveManager.Load();
     }
 

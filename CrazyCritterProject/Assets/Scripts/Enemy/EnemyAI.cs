@@ -8,13 +8,9 @@ public class EnemyAI : MonoBehaviour
     public float chaseDistance = 5f;
     public float captureDistance = 1f;
 
-    private NavMeshPatrol patrol;
+    [SerializeField] private NavMeshPatrol patrol;
     private bool isChasing = false;
 
-    void Start()
-    {
-        patrol = GetComponent<NavMeshPatrol>();
-    }
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
