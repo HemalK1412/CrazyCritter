@@ -334,6 +334,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rotationSpeed: 3
+  maxAngle: 90
 --- !u!114 &147682771
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -348,6 +349,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NutPrefab: {fileID: 9072727584408730725, guid: 860866c1f1822f644bea413613c65f13, type: 3}
   ThrowSpeed: 15
+  Cooldown: 0.5
 --- !u!1 &173042002
 GameObject:
   m_ObjectHideFlags: 0
@@ -1666,7 +1668,9 @@ MonoBehaviour:
   BasketballMiniGameStartCanvas: {fileID: 1981555015}
   BasketballMiniGameHUD: {fileID: 229147999}
   BasketballMiniGameEndCanvas: {fileID: 777063000}
-  p_player: {fileID: 0}
+  BallLauncher: {fileID: 147682771}
+  CameraRotation: {fileID: 147682770}
+  miniGamestimer: {fileID: 1091183448}
 --- !u!1 &1058898873
 GameObject:
   m_ObjectHideFlags: 0

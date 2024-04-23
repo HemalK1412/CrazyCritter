@@ -1,7 +1,9 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.Serialization;
 
 public class BasketballManager : MonoBehaviour
 {
@@ -9,34 +11,31 @@ public class BasketballManager : MonoBehaviour
     public Canvas BasketballMiniGameHUD;
     public Canvas BasketballMiniGameEndCanvas;
 
-    public GameObject p_player;
+    public BallLauncher BallLauncher;
+    public CameraRotation CameraRotation;
 
-    MiniGamestimer miniGamestimer;
+    [SerializeField] private MiniGamestimer miniGamestimer;
     BasketballScoreKeeper basketballScoreKeeper;
     SaveManager saveManager;
 
     private void Awake()
     {
-        miniGamestimer = FindAnyObjectByType<MiniGamestimer>();
-
-
         BasketballMiniGameHUD.gameObject.SetActive(false);
         BasketballMiniGameStartCanvas.gameObject.SetActive(true);
         BasketballMiniGameEndCanvas.gameObject.SetActive(false);
 
         Cursor.lockState = CursorLockMode.None;
 
-        p_player = GameObject.FindGameObjectWithTag("Player");
-        if (p_player == null) return;
-        p_player.GetComponent<CameraRotation>().enabled = false;
-        p_player.GetComponent<BallLauncher>().enabled = false;
+        //p_player = GameObject.FindGameObjectWithTag("Player");
+        if (BallLauncher == null) return;
+        CameraRotation.enabled = false;
+        BallLauncher.enabled = false;
 
     }
-
+    
 
     private void FixedUpdate()
     {
-
         if (miniGamestimer.remainingTime <= 0)
         {
             MiniGameEnd();
@@ -45,8 +44,8 @@ public class BasketballManager : MonoBehaviour
 
     public void MiniGameStartButtonPressed()
     {
-        p_player.GetComponent<CameraRotation>().enabled = true;
-        p_player.GetComponent<BallLauncher>().enabled = true;
+        CameraRotation.enabled = true;
+        BallLauncher.enabled = true;
         BasketballMiniGameStartCanvas.gameObject.SetActive(false);
         BasketballMiniGameHUD.gameObject.SetActive(true);
         Cursor.lockState = CursorLockMode.Locked;
@@ -54,8 +53,8 @@ public class BasketballManager : MonoBehaviour
 
     public void MiniGameEnd()
     {
-        p_player.GetComponent<CameraRotation>().enabled = false;
-        p_player.GetComponent<BallLauncher>().enabled = false;
+        CameraRotation.enabled = false;
+        BallLauncher.enabled = false;
         BasketballMiniGameHUD.gameObject.SetActive(false);
         BasketballMiniGameEndCanvas.gameObject.SetActive(true);
 
@@ -69,5 +68,11 @@ public class BasketballManager : MonoBehaviour
     {
         //saveManager.Save();
         SceneManager.LoadScene("Casino");
+    }
+
+    private void Reset()
+    {
+        BallLauncher = FindObjectOfType<BallLauncher>(true);
+        CameraRotation = FindObjectOfType<CameraRotation>(true);
     }
 }

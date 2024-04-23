@@ -5,15 +5,19 @@ public class BallLauncher : MonoBehaviour
 {
 	public GameObject NutPrefab;
     public float ThrowSpeed = 5.0f;
-
-    void Start() 
-    {
     
-    }
+    public float Cooldown = 0.5f;
+    private float lastThrowTime = 0.0f;
+    
 	void Update()
     {
         if (Input.GetButtonDown("Fire1"))
         {
+	        if(Cooldown > Time.time - lastThrowTime)
+			{
+				return;
+			}
+	        lastThrowTime = Time.time;
             GameObject instance = Instantiate(NutPrefab);
             instance.transform.position = transform.position;
             Rigidbody rb = instance.GetComponent<Rigidbody>();
