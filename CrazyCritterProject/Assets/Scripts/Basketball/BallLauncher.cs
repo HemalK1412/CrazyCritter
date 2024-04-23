@@ -3,8 +3,8 @@ using System.Collections;
 
 public class BallLauncher : MonoBehaviour 
 {
-	public GameObject ballPreFab;
-    public float ballSpeed = 5.0f;
+	public GameObject NutPrefab;
+    public float ThrowSpeed = 5.0f;
 
     void Start() 
     {
@@ -14,11 +14,11 @@ public class BallLauncher : MonoBehaviour
     {
         if (Input.GetButtonDown("Fire1"))
         {
-            GameObject instance = Instantiate(ballPreFab);
+            GameObject instance = Instantiate(NutPrefab);
             instance.transform.position = transform.position;
             Rigidbody rb = instance.GetComponent<Rigidbody>();
             Camera camera = GetComponentInChildren<Camera>();
-            rb.velocity = camera.transform.rotation * Vector3.forward * ballSpeed;
+            rb.velocity = camera.transform.rotation * Vector3.forward * ThrowSpeed;
 		}
     }
 }
