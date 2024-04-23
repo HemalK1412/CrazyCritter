@@ -5,16 +5,12 @@ using System.Runtime.Serialization;
 
 public class SaveManager : MonoBehaviour
 {
-
-    //Placed along with the GameManager so will incorporate the DontDestroyOnLoad()
-
-
-    private player player;
+    
+    private DataBank databank;
 
     private void Awake()
     {
-        player = GameObject.FindAnyObjectByType<player>();
-        Load();
+        databank = GameObject.FindAnyObjectByType<DataBank>();
     }
 
     public void Save()
@@ -26,7 +22,7 @@ public class SaveManager : MonoBehaviour
         try
         {
             BinaryFormatter formatter = new BinaryFormatter();
-            formatter.Serialize(file, player.MyStats);
+            formatter.Serialize(file, databank.MyStats);
         }
 
         catch (SerializationException error)
@@ -47,7 +43,7 @@ public class SaveManager : MonoBehaviour
         try
         {
             BinaryFormatter formatter = new BinaryFormatter();
-            player.MyStats = (Stats)formatter.Deserialize(file);
+            databank.MyStats = (Stats)formatter.Deserialize(file);
         }
         catch (SerializationException error)
         {
