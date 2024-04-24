@@ -7,7 +7,7 @@ public class ColorBlindFilters : MonoBehaviour
     public FilterMode mode = FilterMode.Normal;
     private FilterMode previousMode = FilterMode.Normal;
 
-    private Material shaderMaterial;
+    [SerializeField] private Material shaderMaterial;
 
     // Start is called before the first frame update
     void Start()
@@ -93,3 +93,25 @@ public enum FilterMode
  * This matrix is normalized for a Range maximum stat of 100. 
  * And the game has a Range Maximum of 1 so we just divide these values by 100
  */
+
+public class ColorBlindFilterChanger : MonoBehaviour
+{
+    public ColorBlindFilters colorBlindFilters;
+    public int filterModeIndex;
+
+    private void Start()
+    {
+        if (colorBlindFilters == null) { Debug.LogError("ColorBlindFilters component not found!"); return; }
+
+        SetFilterMode((FilterMode)filterModeIndex);
+    }
+
+    public void SetFilterMode(FilterMode filterMode) { colorBlindFilters.mode = filterMode; }
+
+    public void SetFilterMode(int filterModeIndex)
+    {
+        if (filterModeIndex < 0 || filterModeIndex >= System.Enum.GetNames(typeof(FilterMode)).Length) { Debug.LogError("Invalid filter mode index!"); return; }
+
+        SetFilterMode((FilterMode)filterModeIndex);
+    }
+}
