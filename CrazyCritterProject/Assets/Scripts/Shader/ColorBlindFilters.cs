@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class ColorBlindFilters : MonoBehaviour
@@ -8,18 +6,6 @@ public class ColorBlindFilters : MonoBehaviour
     private FilterMode previousMode = FilterMode.Normal;
 
     [SerializeField] private Material shaderMaterial;
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 
     private static Color[,] RGB =
     {
@@ -94,6 +80,8 @@ public enum FilterMode
  * And the game has a Range Maximum of 1 so we just divide these values by 100
  */
 
+
+/*
 public class ColorBlindFilterChanger : MonoBehaviour
 {
     public ColorBlindFilters colorBlindFilters;
@@ -115,3 +103,4 @@ public class ColorBlindFilterChanger : MonoBehaviour
         SetFilterMode((FilterMode)filterModeIndex);
     }
 }
+*/
