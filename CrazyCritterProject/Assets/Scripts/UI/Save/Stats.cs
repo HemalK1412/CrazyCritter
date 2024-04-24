@@ -5,12 +5,11 @@ public class Stats
 {
     public int DayCount;
     public int Nuts;
-
-    public float Volume;
-    public float Sfx_volume;
-
     public int ColorBlindEnum;
 
-    //maybe
+    public float MasterVolume;
+    public float BackGroundVolume;
+    public float Sfx_volume;
     public float mouse_Sens;
+
 }

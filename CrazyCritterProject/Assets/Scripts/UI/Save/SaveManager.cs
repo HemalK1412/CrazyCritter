@@ -10,6 +10,7 @@ public class SaveManager : MonoBehaviour
     private void Awake()
     {
         databank = GameObject.FindAnyObjectByType<DataBank>();
+        Load();
     }
 
     public void Save()
