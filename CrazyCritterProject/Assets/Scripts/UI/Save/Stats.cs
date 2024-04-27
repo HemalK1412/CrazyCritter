@@ -10,6 +10,5 @@ public class Stats
     public float MasterVolume;
     public float BackGroundVolume;
     public float Sfx_volume;
-    public float mouse_Sens;
 
 }

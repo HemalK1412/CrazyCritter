@@ -63,4 +63,19 @@ public class SaveManager : MonoBehaviour
             Debug.Log("Save file does not exist");
         }
     }
+
+    public void WipeSaves()
+    {
+        string filepath = Application.persistentDataPath + "/CrazyCritters.dat";
+        if(File.Exists(filepath))
+        {
+            File.Delete(filepath);
+            Debug.Log("Save has been deleted.");
+        }
+        else
+        {
+            Debug.Log("Save file does not exist");
+        }
+
+    }
 }

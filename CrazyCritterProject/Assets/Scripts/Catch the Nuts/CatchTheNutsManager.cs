@@ -1,6 +1,7 @@
 using UnityEditor.SearchService;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public class CatchTheNutsManager : MonoBehaviour
 {
@@ -15,14 +16,18 @@ public class CatchTheNutsManager : MonoBehaviour
     public GameObject MG_Destroyer;
     public GameObject Timer;
 
-    MiniGamestimer miniGamestimer;
-    NutParent NutParent;
-    SaveManager saveManager;
+    public TextMeshProUGUI EndScreenScore;
+
+    [SerializeField] MiniGamestimer miniGamestimer;
+    [SerializeField] CatchTheNutsScoreKeeper catchTheNutsScoreKeeper;
+
+    [SerializeField] DataBank dataBank;
+
     
 
     void Awake()
     {
-        miniGamestimer = FindAnyObjectByType<MiniGamestimer>();
+        dataBank = GameObject.Find("DataBank").GetComponent<DataBank>();
 
         MiniGameHUD.gameObject.SetActive(false);
         MiniGameStartCanvas.gameObject.SetActive(true);
@@ -72,12 +77,15 @@ public class CatchTheNutsManager : MonoBehaviour
         MiniGameHUD.gameObject.SetActive(false);
         MiniGameEndCanvas.gameObject.SetActive(true);
 
-        //get the score to the Game manager and save it.
+        EndScreenScore.text = "Nuts Gathered = " + catchTheNutsScoreKeeper.score.ToString();
+
+
     }
 
     public void MiniGameEndContinuePressed()
     {
-        //saveManager.Save();
+        dataBank.MyStats.Nuts = dataBank.MyStats.Nuts + catchTheNutsScoreKeeper.score;
+        dataBank.MyStats.DayCount = dataBank.MyStats.DayCount + 1;
         SceneManager.LoadScene("Casino");
     }
 }

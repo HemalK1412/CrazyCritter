@@ -4,23 +4,19 @@ using TMPro;
 public class GameManager : MonoBehaviour
 {
 
-
-    public int TargetScore = 100; //To be confirmed
-
-    
-    public bool SpeedpowerUP;
-
-
-    public GameObject Bouncer;
     public GameObject p_Player;
     public Rigidbody p_Rigidbody;
 
-    DataBank p_DataBank;
-    public bool isPaused;
-    public GameObject PauseCanvas;
-    public GameObject HUD;
+    [SerializeField] DataBank dataBank;
+
+    public TextMeshProUGUI PauseCanvas;
+    public TextMeshProUGUI HUD;
 
     public bool PauseGameOnStart = true;
+    public bool isPaused;
+
+    public int TargetScore = 1000; //To be confirmed
+
     private void Awake()
     {
 
@@ -32,23 +28,11 @@ public class GameManager : MonoBehaviour
 
     public void Start()
     {
+        /*
         if (PauseCanvas == null) return;
         if (PauseGameOnStart)
         {
-            PauseCanvas.SetActive(false);
-            PauseGame();
-        }
-        else
-        {
-            ResumeGame();
-        }
-    }
-
-    public void Update()
-    {
-        /*
-        if (isPaused == true)
-        {
+            PauseCanvas.gameObject.SetActive(false);
             PauseGame();
         }
         else
@@ -56,9 +40,10 @@ public class GameManager : MonoBehaviour
             ResumeGame();
         }
         */
+    }
 
-        //Bouncer_position = Bouncer.transform.position;
-
+    public void Update()
+    {
         if(Input.GetKeyDown(KeyCode.Escape))
         {
             if (PauseCanvas == null) return;
@@ -70,8 +55,6 @@ public class GameManager : MonoBehaviour
     public void PauseGame()
     {
         if (p_Rigidbody == null) return;
-       // p_Rigidbody.isKinematic = false;
-        //p_Player.SetActive(false);
         isPaused = true;
 
 
@@ -82,8 +65,6 @@ public class GameManager : MonoBehaviour
     public void ResumeGame()
     {
         if (p_Rigidbody == null) return;
-        //p_Rigidbody.isKinematic = true;
-        //p_Player.SetActive(true);
         
         isPaused = false;
         Time.timeScale = 1f;

@@ -5,16 +5,13 @@ using UnityEngine.UI;
 
 public class StartScreenUI : MonoBehaviour
 {
-    [SerializeField] Button Play;
-    [SerializeField] Button Settings;
-    [SerializeField] Button Quit;
 
     [SerializeField] Button SettingsBack;
     [SerializeField] Button SaveSettings;
 
     public Canvas SettingsCanvas;
 
-    SaveManager SaveManager;
+    [SerializeField]SaveManager SaveManager;
 
     /* For Debug Purpose
 
@@ -36,7 +33,6 @@ public class StartScreenUI : MonoBehaviour
 
     Debug End
     */
-
 
     public void PlayButtonPressed()
     {

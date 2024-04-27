@@ -7,8 +7,10 @@ public class Selection : MonoBehaviour
     public float raycastDistance = 10f;
     public bool NutFound;
 
-    public Canvas FindTheNutMiniGameHUD;
-    public Canvas FindTheNutMiniGameEndCanvas;
+
+    [SerializeField] FindTheNutManager findTheNutManager;
+
+
     void Update()
     {
         RaycastHit hit;
@@ -22,23 +24,17 @@ public class Selection : MonoBehaviour
                 {
                     NutFound = true;
                     Debug.Log("Hit object has a child object.");
-                    MiniGameEnd();
+                    findTheNutManager.MiniGameEnd();
+                    enabled = false;
                     //change the text to victory
                 }
                 else
                 {
                     NutFound= false;
-                    MiniGameEnd();
+                    findTheNutManager.MiniGameEnd();
+                    enabled = false;
                 }
             }
         }
-
-    }
-    public void MiniGameEnd()
-    {
-        FindTheNutMiniGameHUD.gameObject.SetActive(false);
-        FindTheNutMiniGameEndCanvas.gameObject.SetActive(true);
-        this.enabled = false;
     }
 }
-// Change mat changes to OnMouseEnter 

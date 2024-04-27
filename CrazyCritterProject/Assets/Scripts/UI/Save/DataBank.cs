@@ -30,11 +30,4 @@ public class DataBank : MonoBehaviour
         if(SaveManager == null)return;
         SaveManager.Load();
     }
-
-    private void FixedUpdate()
-    {
-
-
-    }
-
 }

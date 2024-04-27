@@ -7,6 +7,7 @@ TagManager:
   - Nuts
   - Ground
   - Selectable
+  - SpeedPowerUp
   layers:
   - Default
   - TransparentFX

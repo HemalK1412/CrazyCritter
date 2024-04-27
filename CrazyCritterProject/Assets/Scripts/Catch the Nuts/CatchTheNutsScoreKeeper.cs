@@ -6,7 +6,7 @@ using TMPro;
 public class CatchTheNutsScoreKeeper : MonoBehaviour
 {
     public TextMeshProUGUI text;
-    int score;
+    public int score;
 
 
     private void OnCollisionEnter(Collision collision)

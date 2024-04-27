@@ -12,27 +12,20 @@ public class SmoothControl : MonoBehaviour
     private float verticalAxisValue;
     private float horizontalAxisValue;
 
+    [SerializeField] float powerUpDuration;
+    [SerializeField] float powerUpSpeed;
+    [SerializeField] float powerUpTurn;
+
     void Awake()
     {
         rb = GetComponent<Rigidbody>();
     }
-
-    /*
-    private void OnEnable()
-    {
-        rb.isKinematic = false;
-    }
-
-    private void OnDisable()
-    {
-        rb.isKinematic = true;
-    }
-    */
     
     void Update()
     {
         horizontalAxisValue = Input.GetAxisRaw("Horizontal");
         verticalAxisValue = Input.GetAxisRaw("Vertical");
+
     }
 
     void FixedUpdate()
@@ -53,5 +46,30 @@ public class SmoothControl : MonoBehaviour
         Quaternion turnRotation = Quaternion.Euler(0f, turn, 0f);
         rb.MoveRotation(rb.rotation * turnRotation);
     }
-    
+
+    // Chose  to put the  powerup speed increase here as the collision wont matter in the Casino Floor and would reduce script calls usind the GetComponent function.
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.CompareTag("SpeedPowerUp"))
+        {
+            StartCoroutine(SpeedandTurnSpeedIncrease());
+        }
+    }
+
+    private IEnumerator SpeedandTurnSpeedIncrease()
+    {
+        float originalSpeed = speed;
+        float originalTurnSpeed = turnSpeed;
+
+        speed += powerUpSpeed;
+        turnSpeed += powerUpTurn;
+
+        yield return new WaitForSeconds(powerUpDuration);
+
+        speed = originalSpeed;
+        turnSpeed = originalTurnSpeed;
+    }
+
+
 }

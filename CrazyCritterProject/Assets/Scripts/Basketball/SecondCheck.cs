@@ -7,6 +7,7 @@ public class SecondCheck : MonoBehaviour
     [SerializeField] BasketMove basketMove;
     [SerializeField] ScoreDisplay scoreDisplay;
 
+
 	public void ExpectCollider(Collider collider)
     {
         expectedCollider = collider;
@@ -16,9 +17,9 @@ public class SecondCheck : MonoBehaviour
     {
         if (otherCollider == expectedCollider)
         {
-            //Increment scores
             basketMove.ChangeRingLocation();
-            scoreDisplay.Score++;
+            Destroy(expectedCollider.gameObject);
+            scoreDisplay.IncreaseScore();
 		}
 	}
 }

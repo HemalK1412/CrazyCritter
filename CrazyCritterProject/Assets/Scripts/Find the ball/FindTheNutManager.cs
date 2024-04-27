@@ -1,6 +1,8 @@
 using System.Collections;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+
 
 public class FindTheNutManager : MonoBehaviour
 {
@@ -8,27 +10,30 @@ public class FindTheNutManager : MonoBehaviour
     public GameObject[] cups;
     public GameObject Player;
 
-    public int GameStage = 0;
-
-    public int BaseShuffleMultiplier = 1;
+    public int Score = 10;
 
     public Canvas FindTheNutMiniGameStartCanvas;
+    public Canvas FindTheNutMiniGameHUD;
+    public Canvas FindTheNutMiniGameEndCanvas;
 
+    public TextMeshProUGUI EndScore;
 
-    GameManager gameManager;
-    SaveManager saveManager;
     [SerializeField] NutParent nutParent;
     [SerializeField] Shuffle shuffle;
     [SerializeField] Selection selection;
+    [SerializeField] DataBank dataBank;
+
+
+
     
     private void Awake()
     {
+        dataBank = GameObject.Find("DataBank").GetComponent<DataBank>();
+
         FindTheNutMiniGameStartCanvas.gameObject.SetActive(true);
 
         Player.GetComponent<Selection>().enabled = false;
         Cursor.lockState = CursorLockMode.None;
-        //if (gameManager == null) return;
-        //BaseShuffleMultiplier = gameManager.gm_DayoftheWeek;
     }
 
     void Start()
@@ -37,8 +42,6 @@ public class FindTheNutManager : MonoBehaviour
 
     }
   
-    //Game Manager score update
-    //Some sort of Nut Found panel or changes to the end screen. //Create text field
 
 
     public void MiniGameStartButtonPressed()
@@ -48,12 +51,25 @@ public class FindTheNutManager : MonoBehaviour
     }
 
 
+    public void MiniGameEnd()
+    {
+        Score = Score * dataBank.MyStats.DayCount;
+        FindTheNutMiniGameHUD.gameObject.SetActive(false);
+        FindTheNutMiniGameEndCanvas.gameObject.SetActive(true);
+        if (selection.NutFound == true)
+        {
+            EndScore.text = "You have been rewwarded = " + Score.ToString() + "Nuts";
+            dataBank.MyStats.Nuts = dataBank.MyStats.Nuts + Score;
+        }
+        else
+        {
+            EndScore.text = "You Lost";
+        }
+    }
 
     public void MiniGameEndContinuePressed()
     {
-        //Save the score
-        //saveManager.Save();
-
+        dataBank.MyStats.DayCount = dataBank.MyStats.DayCount + 1;
         SceneManager.LoadScene("Casino");
     }
 
@@ -73,7 +89,7 @@ public class FindTheNutManager : MonoBehaviour
         }
 
         nutParent.ParentToCup();
-        StartCoroutine(shuffle.BaseShuffle(BaseShuffleMultiplier));
+        StartCoroutine(shuffle.BaseShuffle(dataBank.MyStats.DayCount));
         Player.GetComponent<Selection>().enabled = true;
     }
 }
