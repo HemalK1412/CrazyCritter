@@ -9,6 +9,7 @@ public class StartScreenUI : MonoBehaviour
     [SerializeField] Button SettingsBack;
     [SerializeField] Button SaveSettings;
 
+    public Canvas TitleScreen;
     public Canvas SettingsCanvas;
 
     [SerializeField]SaveManager SaveManager;
@@ -48,11 +49,13 @@ public class StartScreenUI : MonoBehaviour
     public void SettingsButtonPressed()
     {
         SettingsCanvas.gameObject.SetActive(true);
+        TitleScreen.gameObject.SetActive(false);
     }
 
     public void SettingsBackPressed()
     {
         SettingsCanvas.gameObject.SetActive(false);
+        TitleScreen.gameObject.SetActive(true);
     }
 
     public void SaveButtonPressed()

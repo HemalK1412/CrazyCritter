@@ -1,5 +1,4 @@
 using UnityEngine;
-using TMPro;
 
 public class GameManager : MonoBehaviour
 {
@@ -9,8 +8,8 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] DataBank dataBank;
 
-    public TextMeshProUGUI PauseCanvas;
-    public TextMeshProUGUI HUD;
+    public Canvas PauseCanvas;
+    public Canvas HUD;
 
     public bool PauseGameOnStart = true;
     public bool isPaused;
@@ -19,10 +18,6 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
-
-        p_Player = GameObject.FindGameObjectWithTag("Player");
-        if (p_Player == null) return;
-        p_Rigidbody = p_Player.GetComponent<Rigidbody>();
     }
 
 
@@ -47,7 +42,6 @@ public class GameManager : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.Escape))
         {
             if (PauseCanvas == null) return;
-            PauseCanvas.gameObject.SetActive(true);
             PauseGame();
         }
     }
@@ -57,6 +51,7 @@ public class GameManager : MonoBehaviour
         if (p_Rigidbody == null) return;
         isPaused = true;
 
+        PauseCanvas.gameObject.SetActive(true);
 
         Time.timeScale = 0f;
         Cursor.lockState = CursorLockMode.None;

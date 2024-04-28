@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PauseState : MonoBehaviour
+public class PausePanelResume : MonoBehaviour
 {
     
     public GameManager gameManager;

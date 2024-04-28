@@ -11,6 +11,8 @@ public class ColorBlindDropdown : MonoBehaviour
 
     private void Start()
     {
+        dataBank = GameObject.Find("DataBank").gameObject.GetComponent<DataBank>();
+
         dropdown.onValueChanged.AddListener(OnDropdownValueChanged);
 
         dropdown.value = dataBank.MyStats.ColorBlindEnum;

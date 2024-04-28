@@ -17,8 +17,7 @@ public class AudioControl : MonoBehaviour
     private void Awake()
     {
         dataBank = GameObject.Find("DataBank").gameObject.GetComponent<DataBank>();
-        
-        /*
+       
         M_Volume = dataBank.MyStats.MasterVolume;
         Master.SetFloat("VolumeMaster", M_Volume);
         MasterVolumeSlider.value = M_Volume;
@@ -30,14 +29,13 @@ public class AudioControl : MonoBehaviour
         SFX_Volume = dataBank.MyStats.Sfx_volume;
         Master.SetFloat("VolumeSFX", SFX_Volume);
         SFXVolumeSlider.value = SFX_Volume;
-        */
+        
     }
     public void SetMasterVolume()
     {
         M_Volume = Mathf.Log10(MasterVolumeSlider.value) * 20;
         dataBank.MyStats.MasterVolume = M_Volume;
         Master.SetFloat("VolumeMaster", dataBank.MyStats.MasterVolume);
-
     }
 
     public void SetBackGroundVolume()
@@ -45,7 +43,6 @@ public class AudioControl : MonoBehaviour
         BG_Volume = Mathf.Log10(BackgroundVolumeSlider.value) * 20;
         dataBank.MyStats.BackGroundVolume = BG_Volume;
         Master.SetFloat("VolumeBackground", dataBank.MyStats.BackGroundVolume);
-
     }
 
     public void SetSFXVolume()
