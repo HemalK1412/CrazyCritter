@@ -19,12 +19,8 @@ public class BasketballManager : MonoBehaviour
     [SerializeField] private MiniGamestimer miniGamestimer;
     [SerializeField] private ScoreDisplay scoreDisplay;
 
-    [SerializeField] DataBank dataBank;
-
     private void Awake()
     {
-        dataBank = GameObject.Find("DataBank").GetComponent<DataBank>();
-
         BasketballMiniGameHUD.gameObject.SetActive(false);
         BasketballMiniGameStartCanvas.gameObject.SetActive(true);
         BasketballMiniGameEndCanvas.gameObject.SetActive(false);
@@ -65,14 +61,17 @@ public class BasketballManager : MonoBehaviour
 
         Cursor.lockState = CursorLockMode.None;
 
-        EndScoreText.text = "Nuts Gathered = " + scoreDisplay.Score.ToString();
-        //get the score to the Game manager and save it.
+        EndScoreText.text = $"Well done! You got {scoreDisplay.Score} nuts!";
     }
 
     public void MiniGameEndContinuePressed()
     {
-        dataBank.MyStats.Nuts = dataBank.MyStats.Nuts + scoreDisplay.Score;
-        dataBank.MyStats.DayCount = dataBank.MyStats.DayCount + 1;
+        if (DataBank.Instance != null)
+        {
+            DataBank.Instance.MyStats.Nuts += scoreDisplay.Score;
+            DataBank.Instance.MyStats.DayCount++;
+        }
+
         SceneManager.LoadScene("Casino");
     }
 

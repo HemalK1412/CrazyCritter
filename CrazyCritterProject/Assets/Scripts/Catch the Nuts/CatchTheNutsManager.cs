@@ -21,14 +21,8 @@ public class CatchTheNutsManager : MonoBehaviour
     [SerializeField] MiniGamestimer miniGamestimer;
     [SerializeField] CatchTheNutsScoreKeeper catchTheNutsScoreKeeper;
 
-    [SerializeField] DataBank dataBank;
-
-    
-
     void Awake()
     {
-        dataBank = GameObject.Find("DataBank").GetComponent<DataBank>();
-
         MiniGameHUD.gameObject.SetActive(false);
         MiniGameStartCanvas.gameObject.SetActive(true);
         MiniGameEndCanvas.gameObject.SetActive(false);
@@ -41,7 +35,7 @@ public class CatchTheNutsManager : MonoBehaviour
         p_player = GameObject.FindGameObjectWithTag("Player");
         if (p_player == null) return;
         p_Rigidbody = p_player.GetComponent<Rigidbody>();
-        p_Rigidbody.isKinematic = false;
+        p_Rigidbody.isKinematic = true;
     }
 
     private void FixedUpdate()
@@ -59,8 +53,8 @@ public class CatchTheNutsManager : MonoBehaviour
         MiniGameStartCanvas.gameObject.SetActive(false);
         MiniGameHUD.gameObject.SetActive(true);
         Cursor.lockState = CursorLockMode.Locked;
-
-        p_Rigidbody.isKinematic = true;
+        
+        p_Rigidbody.isKinematic = false;
         MG_Spawner.SetActive(true);
         MG_Destroyer.SetActive(true);
     }
@@ -72,20 +66,24 @@ public class CatchTheNutsManager : MonoBehaviour
         
         Cursor.lockState = CursorLockMode.None;
         
-        p_Rigidbody.isKinematic = false;
+        p_Rigidbody.isKinematic = true;
 
         MiniGameHUD.gameObject.SetActive(false);
         MiniGameEndCanvas.gameObject.SetActive(true);
 
-        EndScreenScore.text = "Nuts Gathered = " + catchTheNutsScoreKeeper.score.ToString();
+        EndScreenScore.text = $"Nice! You earned {catchTheNutsScoreKeeper.score} nuts!";
 
 
     }
 
     public void MiniGameEndContinuePressed()
     {
-        dataBank.MyStats.Nuts = dataBank.MyStats.Nuts + catchTheNutsScoreKeeper.score;
-        dataBank.MyStats.DayCount = dataBank.MyStats.DayCount + 1;
+        if (DataBank.Instance != null)
+        {
+            DataBank.Instance.MyStats.Nuts += catchTheNutsScoreKeeper.score;
+            DataBank.Instance.MyStats.DayCount += 1;
+        }
+
         SceneManager.LoadScene("Casino");
     }
 }

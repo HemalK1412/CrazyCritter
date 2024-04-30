@@ -54,6 +54,7 @@ public class SmoothControl : MonoBehaviour
         if(other.CompareTag("SpeedPowerUp"))
         {
             StartCoroutine(SpeedandTurnSpeedIncrease());
+            Destroy(other.gameObject);
         }
     }
 

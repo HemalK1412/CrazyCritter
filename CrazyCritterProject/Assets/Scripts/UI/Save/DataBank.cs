@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class DataBank : MonoBehaviour
 {
-    private static DataBank instance;
+    public static DataBank Instance;
 
     public Stats MyStats;
     SaveManager SaveManager;
@@ -14,9 +14,9 @@ public class DataBank : MonoBehaviour
     {
         DontDestroyOnLoad(gameObject);
         
-        if (instance == null)
+        if (Instance == null)
         {
-            instance = this;
+            Instance = this;
         }
         else
         {

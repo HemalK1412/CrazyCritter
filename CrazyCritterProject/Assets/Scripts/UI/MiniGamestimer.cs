@@ -12,6 +12,6 @@ public class MiniGamestimer : MonoBehaviour
         remainingTime -= Time.deltaTime;
         int minutes = Mathf.FloorToInt(remainingTime / 60);
         int seconds = Mathf.FloorToInt(remainingTime % 60);
-        timerText.text = ("Time : " + string.Format("{0:00}:{1:00}", minutes, seconds));
+        timerText.text = ("Time: " + string.Format("{0:00}:{1:00}", minutes, seconds));
     }
 }

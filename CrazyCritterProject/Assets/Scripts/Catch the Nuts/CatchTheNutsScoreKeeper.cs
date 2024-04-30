@@ -8,14 +8,9 @@ public class CatchTheNutsScoreKeeper : MonoBehaviour
     public TextMeshProUGUI text;
     public int score;
 
-
-    private void OnCollisionEnter(Collision collision)
+    public void AddScore()
     {
-        if (collision.gameObject.CompareTag("Nuts"))
-        {
-            score++;
-            text.text = "Score: " + score.ToString();
-            Destroy(collision.gameObject);
-        }
+        score++;
+        text.text = "Score: " + score.ToString();
     }
 }

@@ -21,7 +21,7 @@ public class Shuffle : MonoBehaviour
     private Vector3 midpoint;
     private Vector3 perpendicular;
 
-    FindTheNutManager FindTheNutManager;
+    [SerializeField] private FindTheNutManager FindTheNutManager;
 
 
     private void Start()
@@ -86,6 +86,7 @@ public class Shuffle : MonoBehaviour
             yield return new WaitForSeconds(ShuffleDuration);
         }
         Player.GetComponent<Selection>().enabled = true;
+        FindTheNutManager.FindTheNutMiniGameHUD.gameObject.SetActive(true);
     }
 
     IEnumerator ShuffleOnce()

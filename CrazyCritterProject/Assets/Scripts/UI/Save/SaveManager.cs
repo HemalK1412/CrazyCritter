@@ -5,11 +5,9 @@ using System.Runtime.Serialization;
 
 public class SaveManager : MonoBehaviour
 {
-    private DataBank databank;
 
     private void Awake()
     {
-        databank = GameObject.FindAnyObjectByType<DataBank>();
         Load();
     }
 
@@ -22,7 +20,7 @@ public class SaveManager : MonoBehaviour
         try
         {
             BinaryFormatter formatter = new BinaryFormatter();
-            formatter.Serialize(file, databank.MyStats);
+            formatter.Serialize(file, DataBank.Instance.MyStats);
         }
 
         catch (SerializationException error)
@@ -38,7 +36,11 @@ public class SaveManager : MonoBehaviour
 
     public void Load()
     {
-
+        if(DataBank.Instance == null)
+        {
+            Debug.LogWarning("Can't load saved data because DataBank is null");
+            return;
+        }
         string filepath = Application.persistentDataPath + "/CrazyCritters.dat";
         if (File.Exists(filepath))
         {
@@ -47,7 +49,7 @@ public class SaveManager : MonoBehaviour
             try
             {
                 BinaryFormatter formatter = new BinaryFormatter();
-                databank.MyStats = (Stats)formatter.Deserialize(file);
+                DataBank.Instance.MyStats = (Stats)formatter.Deserialize(file);
             }
             catch (SerializationException error)
             {

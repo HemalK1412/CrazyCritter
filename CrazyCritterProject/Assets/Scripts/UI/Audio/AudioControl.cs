@@ -8,25 +8,27 @@ public class AudioControl : MonoBehaviour
     [SerializeField] Slider MasterVolumeSlider;
     [SerializeField] Slider BackgroundVolumeSlider;
     [SerializeField] Slider SFXVolumeSlider;
-    [SerializeField] DataBank dataBank;
 
     float M_Volume;
     float BG_Volume;
     float SFX_Volume;
 
-    private void Awake()
+    private void Start()
     {
-        dataBank = GameObject.Find("DataBank").gameObject.GetComponent<DataBank>();
-       
-        M_Volume = dataBank.MyStats.MasterVolume;
+        if (DataBank.Instance == null)
+        {
+            Debug.LogWarning("DataBank is null");
+            return;
+        }
+        M_Volume = DataBank.Instance.MyStats.MasterVolume;
         Master.SetFloat("VolumeMaster", M_Volume);
         MasterVolumeSlider.value = M_Volume;
 
-        BG_Volume = dataBank.MyStats.BackGroundVolume;
+        BG_Volume = DataBank.Instance.MyStats.BackGroundVolume;
         Master.SetFloat("VolumeBackground", BG_Volume);
         BackgroundVolumeSlider.value = BG_Volume;
 
-        SFX_Volume = dataBank.MyStats.Sfx_volume;
+        SFX_Volume = DataBank.Instance.MyStats.Sfx_volume;
         Master.SetFloat("VolumeSFX", SFX_Volume);
         SFXVolumeSlider.value = SFX_Volume;
         
@@ -34,22 +36,37 @@ public class AudioControl : MonoBehaviour
     public void SetMasterVolume()
     {
         M_Volume = Mathf.Log10(MasterVolumeSlider.value) * 20;
-        dataBank.MyStats.MasterVolume = M_Volume;
-        Master.SetFloat("VolumeMaster", dataBank.MyStats.MasterVolume);
+        if (DataBank.Instance == null)
+        {
+            Debug.LogWarning("Can't set volume because DataBank is null");
+            return;
+        }
+        DataBank.Instance.MyStats.MasterVolume = M_Volume;
+        Master.SetFloat("VolumeMaster", DataBank.Instance.MyStats.MasterVolume);
     }
 
     public void SetBackGroundVolume()
     {
         BG_Volume = Mathf.Log10(BackgroundVolumeSlider.value) * 20;
-        dataBank.MyStats.BackGroundVolume = BG_Volume;
-        Master.SetFloat("VolumeBackground", dataBank.MyStats.BackGroundVolume);
+        if (DataBank.Instance == null)
+        {
+            Debug.LogWarning("Can't set volume because DataBank is null");
+            return;
+        }
+        DataBank.Instance.MyStats.BackGroundVolume = BG_Volume;
+        Master.SetFloat("VolumeBackground", DataBank.Instance.MyStats.BackGroundVolume);
     }
 
     public void SetSFXVolume()
     {
         SFX_Volume = Mathf .Log10(SFXVolumeSlider.value) * 20;
-        dataBank.MyStats.Sfx_volume = SFX_Volume;
-        Master.SetFloat("VolumeSFX", dataBank.MyStats.Sfx_volume);
+        if (DataBank.Instance == null)
+        {
+            Debug.LogWarning("Can't set volume because DataBank is null");
+            return;
+        }
+        DataBank.Instance.MyStats.Sfx_volume = SFX_Volume;
+        Master.SetFloat("VolumeSFX", DataBank.Instance.MyStats.Sfx_volume);
     }
 
 }

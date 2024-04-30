@@ -6,7 +6,6 @@ public class GameManager : MonoBehaviour
     public GameObject p_Player;
     public Rigidbody p_Rigidbody;
 
-    [SerializeField] DataBank dataBank;
 
     public Canvas PauseCanvas;
     public Canvas HUD;

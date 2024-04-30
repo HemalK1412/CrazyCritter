@@ -20,13 +20,11 @@ public class Selection : MonoBehaviour
             if (Input.GetMouseButtonDown(0))
             {
 
-                if (hit.transform.childCount > 0)
+                if (hit.transform.childCount > 1)
                 {
                     NutFound = true;
-                    Debug.Log("Hit object has a child object.");
                     findTheNutManager.MiniGameEnd();
                     enabled = false;
-                    //change the text to victory
                 }
                 else
                 {

@@ -21,28 +21,14 @@ public class FindTheNutManager : MonoBehaviour
     [SerializeField] NutParent nutParent;
     [SerializeField] Shuffle shuffle;
     [SerializeField] Selection selection;
-    [SerializeField] DataBank dataBank;
-
-
-
     
     private void Awake()
     {
-        dataBank = GameObject.Find("DataBank").GetComponent<DataBank>();
-
         FindTheNutMiniGameStartCanvas.gameObject.SetActive(true);
 
         Player.GetComponent<Selection>().enabled = false;
         Cursor.lockState = CursorLockMode.None;
     }
-
-    void Start()
-    {
-
-
-    }
-  
-
 
     public void MiniGameStartButtonPressed()
     {
@@ -53,23 +39,26 @@ public class FindTheNutManager : MonoBehaviour
 
     public void MiniGameEnd()
     {
-        Score = Score * dataBank.MyStats.DayCount;
+        Score = DataBank.Instance != null ? Score * DataBank.Instance.MyStats.DayCount * Score : Score;
         FindTheNutMiniGameHUD.gameObject.SetActive(false);
         FindTheNutMiniGameEndCanvas.gameObject.SetActive(true);
         if (selection.NutFound == true)
         {
-            EndScore.text = "You have been rewwarded = " + Score.ToString() + "Nuts";
-            dataBank.MyStats.Nuts = dataBank.MyStats.Nuts + Score;
+            EndScore.color = Color.green;
+            EndScore.text = $"You found it! Take {Score} of my nuts :)";
+            DataBank.Instance.MyStats.Nuts += Score;
         }
         else
         {
+            EndScore.color = Color.red;
             EndScore.text = "You Lost";
         }
     }
 
     public void MiniGameEndContinuePressed()
     {
-        dataBank.MyStats.DayCount = dataBank.MyStats.DayCount + 1;
+        if(DataBank.Instance != null)
+            DataBank.Instance.MyStats.DayCount++;
         SceneManager.LoadScene("Casino");
     }
 
@@ -89,7 +78,6 @@ public class FindTheNutManager : MonoBehaviour
         }
 
         nutParent.ParentToCup();
-        StartCoroutine(shuffle.BaseShuffle(dataBank.MyStats.DayCount));
-        Player.GetComponent<Selection>().enabled = true;
+        StartCoroutine(shuffle.BaseShuffle(DataBank.Instance != null ? DataBank.Instance.MyStats.DayCount : 1));
     }
 }

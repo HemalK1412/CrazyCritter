@@ -16,14 +16,13 @@ public class ScoreDisplay : MonoBehaviour
 
 	public void IncreaseScore()
 	{
-		Score = Score++;
+		Score++;
 		ComboCount++;
 
-		if(ComboCount >= ScorePerCombo)
+		/*if(ComboCount >= ScorePerCombo)
 		{
 			Score += ScorePerCombo;
-			ComboCount = 0;
-		}
+		}*/
 
         ScoreHUD.text = "Score: " + Score.ToString();
 		comboCountHUD.text = ComboCount.ToString();

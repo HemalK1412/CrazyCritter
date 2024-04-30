@@ -5,26 +5,31 @@ public class ColorBlindDropdown : MonoBehaviour
 {
 
     [SerializeField] public ColorBlindFilter colorBlindFilter;
-    [SerializeField] DataBank dataBank;
     public TMP_Dropdown dropdown;
     public int MenuValue;
 
     private void Start()
     {
-        dataBank = GameObject.Find("DataBank").gameObject.GetComponent<DataBank>();
-
         dropdown.onValueChanged.AddListener(OnDropdownValueChanged);
+        if (DataBank.Instance == null)
+        {
+            Debug.LogWarning("DataBank is null");
+            return;
+        }
+        dropdown.value = DataBank.Instance.MyStats.ColorBlindEnum;
 
-        dropdown.value = dataBank.MyStats.ColorBlindEnum;
-
-        dataBank.MyStats.ColorBlindEnum = (int)colorBlindFilter.mode;
+        DataBank.Instance.MyStats.ColorBlindEnum = (int)colorBlindFilter.mode;
     }
 
     private void OnDropdownValueChanged(int value)
     {
         ColorBlindMode mode = (ColorBlindMode)value;
-
-        dataBank.MyStats.ColorBlindEnum = dropdown.value;
+        if (DataBank.Instance == null)
+        {
+            Debug.LogWarning("DataBank is null");
+            return;
+        }
+        DataBank.Instance.MyStats.ColorBlindEnum = dropdown.value;
 
         colorBlindFilter.mode = mode;
     }

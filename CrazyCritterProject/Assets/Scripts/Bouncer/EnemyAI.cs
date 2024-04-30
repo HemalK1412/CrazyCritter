@@ -1,11 +1,11 @@
+using System;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.Events;
 
 
 public class EnemyAI : MonoBehaviour
 {
-    [SerializeField] DataBank dataBank;
-
     public Transform player;
     public float chaseSpeed = 3f;
     public float chaseDistance = 5f;
@@ -13,6 +13,9 @@ public class EnemyAI : MonoBehaviour
 
     [SerializeField] private NavMeshPatrol patrol;
     private bool isChasing = false;
+    
+    public UnityEvent OnChase;
+    public UnityEvent OnCaughtPlayer;
 
     private void OnDrawGizmos()
     {
@@ -29,7 +32,7 @@ public class EnemyAI : MonoBehaviour
             {
                 isChasing = true;
                 patrol.enabled = false;
-                
+                OnChase?.Invoke();
             }
         }
         else
@@ -44,8 +47,11 @@ public class EnemyAI : MonoBehaviour
             }
             else if (distanceToPlayer <= captureDistance)
             {
-                dataBank.MyStats.Nuts = dataBank.MyStats.Nuts - 30;
+                if(DataBank.Instance != null)
+                    DataBank.Instance.MyStats.Nuts -= 30;
+                
                 Debug.Log("You have been caught.");
+                OnCaughtPlayer?.Invoke();
             }
         }
     }
