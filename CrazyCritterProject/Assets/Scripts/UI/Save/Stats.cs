@@ -11,4 +11,7 @@ public class Stats
     public float BackGroundVolume;
     public float Sfx_volume;
 
+    public bool GunPickup;
+    public bool HatPickup;
+
 }
