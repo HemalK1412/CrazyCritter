@@ -21,8 +21,9 @@ public class PickupCollected : MonoBehaviour
             if (GunPickup == true)
             {
                 gameManager.isPaused = true;
-
-                DataBank.Instance.MyStats.GunPickup = true;
+                
+                if(DataBank.Instance != null)
+                    DataBank.Instance.MyStats.GunPickup = true;
 
                 GunPickupCanvas.gameObject.SetActive(true);
                 Time.timeScale = 0f;
@@ -33,8 +34,9 @@ public class PickupCollected : MonoBehaviour
             else
             {
                 gameManager.isPaused = true;
-
-                DataBank.Instance.MyStats.HatPickup = true;
+                
+                if(DataBank.Instance != null)
+                    DataBank.Instance.MyStats.HatPickup = true;
 
                 HatPickupCanvas.gameObject.SetActive(true);
                 Time.timeScale = 1f;
