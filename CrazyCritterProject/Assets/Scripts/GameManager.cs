@@ -13,10 +13,32 @@ public class GameManager : MonoBehaviour
     public bool PauseGameOnStart = true;
     public bool isPaused;
 
+    public GameObject GunPickup;
+    public GameObject HatPickup;
+    public Transform GunPickUpLocation;
+    public Transform HatPickupLocation;
+
     public int TargetScore = 1000; //To be confirmed
 
     private void Awake()
     {
+        if (DataBank.Instance.MyStats.GunPickup == false)
+        {
+            GunPickup.transform.position = GunPickUpLocation.transform.position;
+        }
+        else
+        {
+            Destroy(GunPickup);
+        }
+
+        if (DataBank.Instance.MyStats.HatPickup == false)
+        {
+            HatPickup.transform.position = HatPickupLocation.transform.position;
+        }
+        else
+        {
+            Destroy(HatPickup);
+        }
     }
 
 

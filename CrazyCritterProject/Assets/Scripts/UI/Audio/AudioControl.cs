@@ -20,18 +20,15 @@ public class AudioControl : MonoBehaviour
             Debug.LogWarning("DataBank is null");
             return;
         }
-        M_Volume = DataBank.Instance.MyStats.MasterVolume;
-        Master.SetFloat("VolumeMaster", M_Volume);
-        MasterVolumeSlider.value = M_Volume;
 
-        BG_Volume = DataBank.Instance.MyStats.BackGroundVolume;
-        Master.SetFloat("VolumeBackground", BG_Volume);
-        BackgroundVolumeSlider.value = BG_Volume;
+        MasterVolumeSlider.value = DataBank.Instance.MyStats.MasterVolume;
+        Master.SetFloat("VolumeMaster", Mathf.Log10(MasterVolumeSlider.value) * 20);
 
-        SFX_Volume = DataBank.Instance.MyStats.Sfx_volume;
-        Master.SetFloat("VolumeSFX", SFX_Volume);
-        SFXVolumeSlider.value = SFX_Volume;
-        
+        BackgroundVolumeSlider.value = DataBank.Instance.MyStats.BackGroundVolume;
+        Master.SetFloat("VolumeBackground", Mathf.Log10(BackgroundVolumeSlider.value) * 20);
+
+        SFXVolumeSlider.value = DataBank.Instance.MyStats.Sfx_volume;
+        Master.SetFloat("VolumeSFX", Mathf.Log10(SFXVolumeSlider.value) * 20);
     }
     public void SetMasterVolume()
     {
@@ -41,7 +38,7 @@ public class AudioControl : MonoBehaviour
             Debug.LogWarning("Can't set volume because DataBank is null");
             return;
         }
-        DataBank.Instance.MyStats.MasterVolume = M_Volume;
+        DataBank.Instance.MyStats.MasterVolume = MasterVolumeSlider.value;
         Master.SetFloat("VolumeMaster", DataBank.Instance.MyStats.MasterVolume);
     }
 
@@ -53,7 +50,7 @@ public class AudioControl : MonoBehaviour
             Debug.LogWarning("Can't set volume because DataBank is null");
             return;
         }
-        DataBank.Instance.MyStats.BackGroundVolume = BG_Volume;
+        DataBank.Instance.MyStats.BackGroundVolume = BackgroundVolumeSlider.value;
         Master.SetFloat("VolumeBackground", DataBank.Instance.MyStats.BackGroundVolume);
     }
 
@@ -65,7 +62,7 @@ public class AudioControl : MonoBehaviour
             Debug.LogWarning("Can't set volume because DataBank is null");
             return;
         }
-        DataBank.Instance.MyStats.Sfx_volume = SFX_Volume;
+        DataBank.Instance.MyStats.Sfx_volume = SFXVolumeSlider.value;
         Master.SetFloat("VolumeSFX", DataBank.Instance.MyStats.Sfx_volume);
     }
 

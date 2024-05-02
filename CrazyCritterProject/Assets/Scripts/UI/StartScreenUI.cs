@@ -63,5 +63,10 @@ public class StartScreenUI : MonoBehaviour
         SaveManager.Save();
     }
 
+    public void DeleteSavePressed()
+    {
+        SaveManager.WipeSaves();
+    }
+
 
 }
