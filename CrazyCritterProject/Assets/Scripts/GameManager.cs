@@ -22,18 +22,20 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
-        if (DataBank.Instance.MyStats.GunPickup == false)
+        if (DataBank.Instance == null || DataBank.Instance.MyStats.GunPickup == false)
         {
-            GunPickup.transform.position = GunPickUpLocation.transform.position;
+            if(GunPickup!=null)
+                GunPickup.transform.position = GunPickUpLocation.transform.position;
         }
         else
         {
             Destroy(GunPickup);
         }
 
-        if (DataBank.Instance.MyStats.HatPickup == false)
+        if (DataBank.Instance == null || DataBank.Instance.MyStats.HatPickup == false)
         {
-            HatPickup.transform.position = HatPickupLocation.transform.position;
+            if(HatPickup!=null)
+                HatPickup.transform.position = HatPickupLocation.transform.position;
         }
         else
         {

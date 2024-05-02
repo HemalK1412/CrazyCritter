@@ -46,7 +46,8 @@ public class FindTheNutManager : MonoBehaviour
         {
             EndScore.color = Color.green;
             EndScore.text = $"You found it! Take {Score} of my nuts :)";
-            DataBank.Instance.MyStats.Nuts += Score;
+            if(DataBank.Instance != null)
+                DataBank.Instance.MyStats.Nuts += Score;
         }
         else
         {
