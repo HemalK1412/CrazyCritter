@@ -1113,7 +1113,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: e071c17503e696543a3ae7b78de07deb, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1938065897}
   m_SourcePrefab: {fileID: 100100000, guid: e071c17503e696543a3ae7b78de07deb, type: 3}
 --- !u!4 &44407394 stripped
 Transform:
@@ -4567,11 +4570,11 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: -1787407107948014040, guid: c4ca1f305b61df9448513f36622f59a7, type: 2}
-  m_audioClip: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: c05618ba058fad04a97f6f24ec5928a1, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.1
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -11981,9 +11984,9 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: -1787407107948014040, guid: c4ca1f305b61df9448513f36622f59a7, type: 2}
   m_audioClip: {fileID: 8300000, guid: 7bbb3fab4c15b18408384d5a4d9d05f6, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.178
+  m_Volume: 0.3
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -12510,40 +12513,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6944840094812725238, guid: ec8197d75601f124b868d7159cac5951, type: 3}
   m_PrefabInstance: {fileID: 1061447916}
   m_PrefabAsset: {fileID: 0}
---- !u!21 &1318779457
-Material:
-  serializedVersion: 8
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: Hidden/ChannelMixer
-  m_Shader: {fileID: 4800000, guid: 23b227a99d5937e4d880bc3ef49d02f5, type: 3}
-  m_Parent: {fileID: 0}
-  m_ModifiedSerializedProperties: 0
-  m_ValidKeywords: []
-  m_InvalidKeywords: []
-  m_LightmapFlags: 4
-  m_EnableInstancingVariants: 0
-  m_DoubleSidedGI: 0
-  m_CustomRenderQueue: -1
-  stringTagMap: {}
-  disabledShaderPasses: []
-  m_LockedProperties: 
-  m_SavedProperties:
-    serializedVersion: 3
-    m_TexEnvs:
-    - _MainTex:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    m_Ints: []
-    m_Floats: []
-    m_Colors:
-    - _B: {r: 0, g: 0, b: 1, a: 1}
-    - _G: {r: 0, g: 1, b: 0, a: 1}
-    - _R: {r: 1, g: 0, b: 0, a: 1}
-  m_BuildTextureStacks: []
 --- !u!1 &1325327899
 GameObject:
   m_ObjectHideFlags: 0
@@ -13070,6 +13039,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: e071c17503e696543a3ae7b78de07deb, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1332411036}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: e071c17503e696543a3ae7b78de07deb, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1332411039}
     - targetCorrespondingSourceObject: {fileID: -4819223349682164798, guid: e071c17503e696543a3ae7b78de07deb, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1332411038}
@@ -13188,6 +13160,25 @@ CapsuleCollider:
   m_Height: 8.17
   m_Direction: 2
   m_Center: {x: 0, y: 0, z: 4.16}
+--- !u!114 &1332411039
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1332411034}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 49517ddd8c04066459cd734a1a3f59f7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audioClips:
+  - {fileID: 8300000, guid: e73432cd7a4ae1b4f8fefd3b519974f4, type: 3}
+  - {fileID: 8300000, guid: 9f9be3e319dcdb34899d5eb4e487bf9d, type: 3}
+  - {fileID: 8300000, guid: 6c09cd1eaf1cf174abaa1984d86f5c3e, type: 3}
+  - {fileID: 8300000, guid: 5298695812e99384d915bdb1d75b9091, type: 3}
+  audioSource: {fileID: 926389232}
+  pitchRange: {x: 1, y: 1}
 --- !u!1001 &1365009730
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -18607,6 +18598,30 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5664108062918662187, guid: 606e3dfb6dfedab4687d0876171d3f94, type: 3}
   m_PrefabInstance: {fileID: 1928015256}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1938065896 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: e071c17503e696543a3ae7b78de07deb, type: 3}
+  m_PrefabInstance: {fileID: 44407393}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1938065897
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1938065896}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 49517ddd8c04066459cd734a1a3f59f7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audioClips:
+  - {fileID: 8300000, guid: e73432cd7a4ae1b4f8fefd3b519974f4, type: 3}
+  - {fileID: 8300000, guid: 9f9be3e319dcdb34899d5eb4e487bf9d, type: 3}
+  - {fileID: 8300000, guid: 6c09cd1eaf1cf174abaa1984d86f5c3e, type: 3}
+  - {fileID: 8300000, guid: 5298695812e99384d915bdb1d75b9091, type: 3}
+  audioSource: {fileID: 428243437}
+  pitchRange: {x: 1, y: 1}
 --- !u!1 &1947653853
 GameObject:
   m_ObjectHideFlags: 0
@@ -19935,6 +19950,40 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1607880204}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!21 &2063607184
+Material:
+  serializedVersion: 8
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Hidden/ChannelMixer
+  m_Shader: {fileID: 4800000, guid: 23b227a99d5937e4d880bc3ef49d02f5, type: 3}
+  m_Parent: {fileID: 0}
+  m_ModifiedSerializedProperties: 0
+  m_ValidKeywords: []
+  m_InvalidKeywords: []
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_LockedProperties: 
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _MainTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Ints: []
+    m_Floats: []
+    m_Colors:
+    - _B: {r: 0, g: 0, b: 1, a: 1}
+    - _G: {r: 0, g: 1, b: 0, a: 1}
+    - _R: {r: 1, g: 0, b: 0, a: 1}
+  m_BuildTextureStacks: []
 --- !u!1 &2069613470
 GameObject:
   m_ObjectHideFlags: 0
@@ -20936,7 +20985,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mode: 0
   showDifference: 0
-  material: {fileID: 1318779457}
+  material: {fileID: 2063607184}
 --- !u!114 &6565581569541698512
 MonoBehaviour:
   m_ObjectHideFlags: 0

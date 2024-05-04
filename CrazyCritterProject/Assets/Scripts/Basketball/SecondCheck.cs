@@ -1,12 +1,13 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.Events;
 
 public class SecondCheck : MonoBehaviour
 {
     Collider expectedCollider;
     [SerializeField] BasketMove basketMove;
     [SerializeField] ScoreDisplay scoreDisplay;
-
+    public UnityEvent onScore;
 
 	public void ExpectCollider(Collider collider)
     {
@@ -20,6 +21,7 @@ public class SecondCheck : MonoBehaviour
             basketMove.ChangeRingLocation();
             Destroy(expectedCollider.gameObject);
             scoreDisplay.IncreaseScore();
+            onScore.Invoke();
 		}
 	}
 }

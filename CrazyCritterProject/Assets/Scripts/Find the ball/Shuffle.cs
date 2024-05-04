@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Shuffle : MonoBehaviour
 {
@@ -22,6 +23,7 @@ public class Shuffle : MonoBehaviour
     private Vector3 perpendicular;
 
     [SerializeField] private FindTheNutManager FindTheNutManager;
+    public UnityEvent OnShuffleOnce;
 
 
     private void Start()
@@ -83,6 +85,7 @@ public class Shuffle : MonoBehaviour
         for (int i = 0; i < NoofShuffles * DayCount; i++)
         {
             StartCoroutine(ShuffleOnce());
+            OnShuffleOnce.Invoke();
             yield return new WaitForSeconds(ShuffleDuration);
         }
         Player.GetComponent<Selection>().enabled = true;
