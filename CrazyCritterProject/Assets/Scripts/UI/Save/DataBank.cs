@@ -26,6 +26,11 @@ public class DataBank : MonoBehaviour
         {
             MyStats.DayCount++;
         }
+        if(Instance.MyStats.Nuts == 0)
+        {
+            MyStats.Nuts = 100;
+        }
+
     }
 
     private void Start()

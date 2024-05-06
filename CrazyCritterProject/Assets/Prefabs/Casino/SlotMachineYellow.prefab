@@ -247,9 +247,6 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 61cdd814d25118745a9754590152d130, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 23700346899479381}
-    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 61cdd814d25118745a9754590152d130, type: 3}
-      insertIndex: -1
       addedObject: {fileID: 2108518764994715257}
   m_SourcePrefab: {fileID: 100100000, guid: 61cdd814d25118745a9754590152d130, type: 3}
 --- !u!4 &8239933949753505632 stripped
@@ -262,19 +259,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 61cdd814d25118745a9754590152d130, type: 3}
   m_PrefabInstance: {fileID: 8489453764749578379}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &23700346899479381
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8724018839748963802}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6b0e8bd635b869f4bac621141eaccfe8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  MiniGameScene: Catch the Nuts
 --- !u!65 &2108518764994715257
 BoxCollider:
   m_ObjectHideFlags: 0

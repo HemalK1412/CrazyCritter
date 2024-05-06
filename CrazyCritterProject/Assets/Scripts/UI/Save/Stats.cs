@@ -14,4 +14,5 @@ public class Stats
     public bool GunPickup;
     public bool HatPickup;
 
+    public int TargetScore;
 }

@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -40,6 +41,13 @@ public class GameManager : MonoBehaviour
         else
         {
             Destroy(HatPickup);
+        }
+
+        if(DataBank.Instance.MyStats.DayCount == 7)
+        {
+            SceneManager.LoadScene("WinLose");
+            // Nut Calculation is in The Win Lose scene
+            // Background check the value in Awake()
         }
     }
 
