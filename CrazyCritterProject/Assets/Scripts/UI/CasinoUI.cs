@@ -1,7 +1,7 @@
 using UnityEngine;
 using TMPro;
 
-public class CasinoHUD : MonoBehaviour
+public class CasinoUI : MonoBehaviour
 {
     public TextMeshProUGUI DayCountUIElem;
     public TextMeshProUGUI NutCountUIElem;

@@ -2,7 +2,6 @@ using System;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.Events;
-using UnityEngine.SceneManagement;
 
 
 public class EnemyAI : MonoBehaviour
@@ -11,7 +10,6 @@ public class EnemyAI : MonoBehaviour
     public float chaseSpeed = 3f;
     public float chaseDistance = 5f;
     public float captureDistance = 1f;
-    public int NutsToDeduct;
 
     [SerializeField] private NavMeshPatrol patrol;
     private bool isChasing = false;
@@ -50,11 +48,10 @@ public class EnemyAI : MonoBehaviour
             else if (distanceToPlayer <= captureDistance)
             {
                 if(DataBank.Instance != null)
-                    DataBank.Instance.MyStats.Nuts -= NutsToDeduct;
+                    DataBank.Instance.MyStats.Nuts -= 30;
                 
                 Debug.Log("You have been caught.");
                 OnCaughtPlayer?.Invoke();
-                SceneManager.LoadScene("Casino");
             }
         }
     }

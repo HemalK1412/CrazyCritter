@@ -10,7 +10,7 @@ public class CutScene : MonoBehaviour
 
     public GameObject CutSceneCluster;
 
-    [SerializeField] GameObject GameCamera;
+
     [SerializeField] GameObject HUD;
 
     [SerializeField] NavMeshPatrol enemyPatrol;
@@ -18,18 +18,15 @@ public class CutScene : MonoBehaviour
     [SerializeField] SmoothControl smoothControl;
 
     [SerializeField] ColorBlindDropdown colorBlindDropdown;
-
-    [SerializeField] SaveManager saveManager;
     private void Awake()
     {
+        
         //colorBlindDropdown.MenuValue = DataBank.Instance.MyStats.ColorBlindEnum;
 
         if (DataBank.Instance.MyStats.CutSceneDisplayed == true)
         {
             Destroy(CutSceneCluster);
         }
-
-        GameCamera.SetActive(false);
     }
     private void Start()
     {
@@ -67,8 +64,6 @@ public class CutScene : MonoBehaviour
         enemyPatrol.enabled = true;
 
         DataBank.Instance.MyStats.CutSceneDisplayed = true;
-        saveManager.Save();
-        GameCamera.SetActive(true);
         Destroy(CutSceneCluster);
 
     }

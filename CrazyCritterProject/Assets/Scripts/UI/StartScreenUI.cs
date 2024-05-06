@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -13,9 +14,7 @@ public class StartScreenUI : MonoBehaviour
 
     [SerializeField]SaveManager SaveManager;
 
-    /* 
-    
-    For Debug Purpose
+    /* For Debug Purpose
 
     public TMP_Text DayCount;
     public TMP_Text NutCount;
@@ -34,7 +33,6 @@ public class StartScreenUI : MonoBehaviour
     }
 
     Debug End
-
     */
 
     public void PlayButtonPressed()
