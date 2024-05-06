@@ -16,6 +16,7 @@ public class BasketballManager : MonoBehaviour
 
     public TextMeshProUGUI EndScoreText;
 
+    [SerializeField] SaveManager saveManager;
     [SerializeField] private MiniGamestimer miniGamestimer;
     [SerializeField] private ScoreDisplay scoreDisplay;
 
@@ -62,16 +63,19 @@ public class BasketballManager : MonoBehaviour
         Cursor.lockState = CursorLockMode.None;
 
         EndScoreText.text = $"Well done! You got {scoreDisplay.Score} nuts!";
+
     }
 
     public void MiniGameEndContinuePressed()
     {
         if (DataBank.Instance != null)
         {
-            DataBank.Instance.MyStats.Nuts += scoreDisplay.Score;
+            DataBank.Instance.MyStats.Nuts = DataBank.Instance.MyStats.Nuts + scoreDisplay.Score;
             DataBank.Instance.MyStats.DayCount++;
+
         }
 
+        saveManager.Save();
         SceneManager.LoadScene("Casino");
     }
 

@@ -16,23 +16,31 @@ public class ScoreDisplay : MonoBehaviour
 
 	public void IncreaseScore()
 	{
-		Score++;
+		Score = Score + 50;
+		
+		/* The section is for the combo version of the game.
 		ComboCount++;
-
-		/*if(ComboCount >= ScorePerCombo)
+        
+		if(ComboCount >= ScorePerCombo)
 		{
 			Score += ScorePerCombo;
-		}*/
+		}
+        
+		comboCountHUD.text = ComboCount.ToString();
+		*/
+
 
         ScoreHUD.text = "Score: " + Score.ToString();
-		comboCountHUD.text = ComboCount.ToString();
 
     }
 
-
+	/*
     public void ResetCombo()
     {
+		Score = Score + ComboCount;
+		ScoreHUD.text = "Score: " + Score.ToString();
 		ComboCount = 0;
         comboCountHUD.text = ComboCount.ToString();
     }
+	*/
 }

@@ -8,7 +8,7 @@ public class CasinoUI : MonoBehaviour
 
     private void FixedUpdate()
     {
-        DayCountUIElem.text = $"DayCount: {DataBank.Instance.MyStats.DayCount}";
-        NutCountUIElem.text = $"NutCount: {DataBank.Instance.MyStats.Nuts}";
+        DayCountUIElem.text = DataBank.Instance.MyStats.DayCount.ToString();
+        NutCountUIElem.text = DataBank.Instance.MyStats.Nuts.ToString();
     }
 }

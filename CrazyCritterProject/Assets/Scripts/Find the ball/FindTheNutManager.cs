@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Runtime.InteropServices;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -18,6 +19,7 @@ public class FindTheNutManager : MonoBehaviour
 
     public TextMeshProUGUI EndScore;
 
+    [SerializeField] SaveManager saveManager;
     [SerializeField] NutParent nutParent;
     [SerializeField] Shuffle shuffle;
     [SerializeField] Selection selection;
@@ -58,8 +60,12 @@ public class FindTheNutManager : MonoBehaviour
 
     public void MiniGameEndContinuePressed()
     {
-        if(DataBank.Instance != null)
+        if (DataBank.Instance != null)
+        {
+            DataBank.Instance.MyStats.Nuts += Score;
             DataBank.Instance.MyStats.DayCount++;
+        }
+        saveManager.Save();
         SceneManager.LoadScene("Casino");
     }
 

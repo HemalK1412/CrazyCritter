@@ -22,6 +22,10 @@ public class DataBank : MonoBehaviour
         {
             Destroy(gameObject);
         }
+        if(Instance.MyStats.DayCount == 0)
+        {
+            MyStats.DayCount++;
+        }
     }
 
     private void Start()

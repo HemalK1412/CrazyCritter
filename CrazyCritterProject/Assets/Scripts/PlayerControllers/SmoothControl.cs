@@ -48,6 +48,8 @@ public class SmoothControl : MonoBehaviour
     }
 
     // Chose  to put the  powerup speed increase here as the collision wont matter in the Casino Floor and would reduce script calls usind the GetComponent function.
+    /*
+     * This the power up for the Catch the Nuts Minigame we chose to remove that minigame completly.
 
     private void OnTriggerEnter(Collider other)
     {
@@ -71,6 +73,6 @@ public class SmoothControl : MonoBehaviour
         speed = originalSpeed;
         turnSpeed = originalTurnSpeed;
     }
-
+    */
 
 }

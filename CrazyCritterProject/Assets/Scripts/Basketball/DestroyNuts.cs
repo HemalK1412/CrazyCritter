@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class DestroyNuts : MonoBehaviour
 {
-    [SerializeField] ScoreDisplay scoreDisplay;
+    //[SerializeField] ScoreDisplay scoreDisplay;
 
     private void OnCollisionEnter(Collision collision)
     {
@@ -10,7 +10,7 @@ public class DestroyNuts : MonoBehaviour
         {
 
             Destroy (collision.gameObject, 3.0f);
-            scoreDisplay.ResetCombo();
+            //scoreDisplay.ResetCombo();
             
         }
     }
