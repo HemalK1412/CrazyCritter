@@ -1,6 +1,5 @@
 using System.Collections;
 using UnityEngine;
-using UnityEngine.AI;
 
 public class CutScene : MonoBehaviour
 {
@@ -10,19 +9,12 @@ public class CutScene : MonoBehaviour
 
     public GameObject CutSceneCluster;
 
-
     [SerializeField] GameObject HUD;
-
-    [SerializeField] NavMeshPatrol enemyPatrol;
-    [SerializeField] NavMeshAgent enemyAgent;
+    [SerializeField] EnemyAI enemyAI;
     [SerializeField] SmoothControl smoothControl;
 
-    [SerializeField] ColorBlindDropdown colorBlindDropdown;
     private void Awake()
     {
-        
-        //colorBlindDropdown.MenuValue = DataBank.Instance.MyStats.ColorBlindEnum;
-
         if (DataBank.Instance.MyStats.CutSceneDisplayed == true)
         {
             Destroy(CutSceneCluster);
@@ -32,16 +24,50 @@ public class CutScene : MonoBehaviour
     {
         smoothControl.enabled = false;
         HUD.SetActive(false);
-
-        enemyPatrol.enabled = false;
-        enemyAgent.enabled = false;
-
-
+        enemyAI.enabled = false;
         StartCoroutine(TeleportLerpRoutine());
     }
 
     private IEnumerator TeleportLerpRoutine()
     {
+        /*
+        transform.position = Teleports[1].position;
+        float elapsedTime = 0;
+        while (elapsedTime < lerpDuration)
+        {
+            elapsedTime += Time.deltaTime;
+            transform.position = Vector3.Lerp(Teleports[1].position, Lerps[1].position, elapsedTime / lerpDuration);
+            yield return null;
+        }
+
+        transform.position = Teleports[2].position;
+        elapsedTime = 0;
+        while (elapsedTime < lerpDuration)
+        {
+            elapsedTime += Time.deltaTime;
+            transform.position = Vector3.Lerp(Teleports[2].position, Lerps[2].position, elapsedTime / lerpDuration);
+            yield return null;
+        }
+
+        transform.position = Teleports[3].position;
+        elapsedTime = 0;
+        while (elapsedTime < lerpDuration)
+        {
+            elapsedTime += Time.deltaTime;
+            transform.position = Vector3.Lerp(Teleports[3].position, Lerps[3].position, elapsedTime / lerpDuration);
+            yield return null;
+        }
+        transform.position = Teleports[4].position;
+        elapsedTime = 0;
+        while (elapsedTime < lerpDuration)
+        {
+            elapsedTime += Time.deltaTime;
+            transform.position = Vector3.Lerp(Teleports[4].position, Lerps[4].position, elapsedTime / lerpDuration);
+            yield return null;
+        }
+        */
+        
+
         for (int i = 0; i < Teleports.Length; i++)
         {
             transform.position = Teleports[i].position;
@@ -59,9 +85,7 @@ public class CutScene : MonoBehaviour
         smoothControl.enabled = true;
 
         HUD.SetActive(true);
-
-        enemyAgent.enabled = true;
-        enemyPatrol.enabled = true;
+        enemyAI.enabled = true;
 
         DataBank.Instance.MyStats.CutSceneDisplayed = true;
         Destroy(CutSceneCluster);
