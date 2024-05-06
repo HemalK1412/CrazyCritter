@@ -22,6 +22,15 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
+        if(DataBank.Instance.MyStats.DayCount >=4 )
+        {
+            /* 
+             * set variable win lose
+             * Get  to nect screen with the win lose apnel or cutscene
+             */
+        }
+
+
         if (DataBank.Instance == null || DataBank.Instance.MyStats.GunPickup == false)
         {
             if(GunPickup!=null)
@@ -41,6 +50,8 @@ public class GameManager : MonoBehaviour
         {
             Destroy(HatPickup);
         }
+
+
     }
 
 
