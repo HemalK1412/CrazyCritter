@@ -7,12 +7,14 @@ public class MiniGameLoader : MonoBehaviour
     public string MiniGameScene;
     public bool PlayerisHere;
 
+    public GameObject PressE;
 
     public void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("Player"))
         {
             PlayerisHere = true;
+            PressE.SetActive(true);
         }
     }
     private void OnTriggerStay(Collider other)
@@ -20,11 +22,13 @@ public class MiniGameLoader : MonoBehaviour
         if (other.gameObject.CompareTag("Player"))
         {
             PlayerisHere = true;
+            PressE.SetActive(true);
         }
     }
     private void OnTriggerExit(Collider other)
     {
         PlayerisHere = false;
+        PressE.SetActive(false);
     }
 
     private void Update()

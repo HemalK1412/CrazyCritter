@@ -31,6 +31,8 @@ public class DataBank : MonoBehaviour
             MyStats.Nuts = 100;
         }
 
+
+
     }
 
     private void Start()
