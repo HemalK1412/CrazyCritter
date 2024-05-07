@@ -3,10 +3,8 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-
     public GameObject p_Player;
     public Rigidbody p_Rigidbody;
-
 
     public Canvas PauseCanvas;
     public Canvas HUD;
@@ -19,10 +17,11 @@ public class GameManager : MonoBehaviour
     public Transform GunPickUpLocation;
     public Transform HatPickupLocation;
 
-    public int TargetScore = 1000; //To be confirmed
+    [SerializeField] SaveManager saveManager;
 
     private void Awake()
     {
+        saveManager.Save();
         if (DataBank.Instance == null || DataBank.Instance.MyStats.GunPickup == false)
         {
             if(GunPickup!=null)
@@ -43,11 +42,11 @@ public class GameManager : MonoBehaviour
             Destroy(HatPickup);
         }
 
-        if(DataBank.Instance.MyStats.DayCount == 7)
+        if(DataBank.Instance.MyStats.Nuts <= 90 || DataBank.Instance.MyStats.DayCount == 8)
         {
+            saveManager.Save();
             SceneManager.LoadScene("WinLose");
             // Nut Calculation is in The Win Lose scene
-            // Background check the value in Awake()
         }
     }
 

@@ -38,6 +38,8 @@ public class StartScreenUI : MonoBehaviour
     public void PlayButtonPressed()
     {
         SceneManager.LoadScene("Casino");
+
+        PlayerPrefs.SetInt("NewGame", 1);
     }
 
 

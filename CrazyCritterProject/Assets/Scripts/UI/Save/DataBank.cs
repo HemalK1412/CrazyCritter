@@ -26,14 +26,19 @@ public class DataBank : MonoBehaviour
         {
             MyStats.DayCount++;
         }
-        if(Instance.MyStats.Nuts == 0)
+
+        PlayerPrefs.SetInt("InitialCurrency", 500);
+        PlayerPrefs.SetInt("TargetScore", 1000);
+        PlayerPrefs.SetInt("CostofMinigame", 50);
+
+
+        if (!PlayerPrefs.HasKey("NewGame"))
         {
-            MyStats.Nuts = 100;
+            MyStats.Nuts = PlayerPrefs.GetInt("InitialCurrency");
+            //Creates a key when startbutton is pressed.
         }
-
-
-
     }
+
 
     private void Start()
     {
