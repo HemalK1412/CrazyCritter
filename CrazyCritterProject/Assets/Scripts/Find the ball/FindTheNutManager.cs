@@ -47,24 +47,28 @@ public class FindTheNutManager : MonoBehaviour
         if (selection.NutFound == true)
         {
             EndScore.color = Color.green;
-            EndScore.text = $"You found it! Take {Score} of my nuts :)";
-            if(DataBank.Instance != null)
-                DataBank.Instance.MyStats.Nuts += Score;
+            EndScore.text = $"You found it! Take 150 of my nuts :)";
         }
         else
         {
             EndScore.color = Color.red;
-            EndScore.text = "You Lost";
+            EndScore.text = "You Lost 100 Nuts.";
         }
     }
 
     public void MiniGameEndContinuePressed()
     {
-        if (DataBank.Instance != null)
+        if (selection.NutFound == true)
         {
-            DataBank.Instance.MyStats.Nuts += Score;
-            DataBank.Instance.MyStats.DayCount++;
+            DataBank.Instance.MyStats.Nuts += 150;
+
         }
+        else
+        {
+            DataBank.Instance.MyStats.Nuts -= 100;
+        }
+
+        DataBank.Instance.MyStats.DayCount++;
         saveManager.Save();
         SceneManager.LoadScene("Casino");
     }

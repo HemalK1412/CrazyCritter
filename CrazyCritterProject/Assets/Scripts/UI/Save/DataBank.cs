@@ -12,6 +12,13 @@ public class DataBank : MonoBehaviour
 
     private void Awake()
     {
+
+        PlayerPrefs.SetInt("InitialCurrency", 500);
+        PlayerPrefs.SetInt("TargetScore", 1000);
+
+
+
+
         DontDestroyOnLoad(gameObject);
         
         if (Instance == null)
@@ -27,16 +34,6 @@ public class DataBank : MonoBehaviour
             MyStats.DayCount++;
         }
 
-        PlayerPrefs.SetInt("InitialCurrency", 500);
-        PlayerPrefs.SetInt("TargetScore", 1000);
-        PlayerPrefs.SetInt("CostofMinigame", 50);
-
-
-        if (!PlayerPrefs.HasKey("NewGame"))
-        {
-            MyStats.Nuts = PlayerPrefs.GetInt("InitialCurrency");
-            //Creates a key when startbutton is pressed.
-        }
     }
 
 

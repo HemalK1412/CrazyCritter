@@ -16,7 +16,7 @@ public class ScoreDisplay : MonoBehaviour
 
 	public void IncreaseScore()
 	{
-		Score = Score + 50;
+		Score += 1;
 		
 		/* The section is for the combo version of the game.
 		ComboCount++;

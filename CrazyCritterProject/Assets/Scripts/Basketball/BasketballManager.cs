@@ -61,8 +61,14 @@ public class BasketballManager : MonoBehaviour
         BasketballMiniGameEndCanvas.gameObject.SetActive(true);
 
         Cursor.lockState = CursorLockMode.None;
-
-        EndScoreText.text = $"Well done! You got {scoreDisplay.Score} nuts!";
+        if (scoreDisplay.Score < 15)
+        {
+            EndScoreText.text = $"Awwww! You lost 100 nuts!";
+        }
+        else
+        {
+            EndScoreText.text = $"Well done! You won 150 nuts!";
+        }
 
     }
 
@@ -70,11 +76,17 @@ public class BasketballManager : MonoBehaviour
     {
         if (DataBank.Instance != null)
         {
-            DataBank.Instance.MyStats.Nuts = DataBank.Instance.MyStats.Nuts + scoreDisplay.Score;
-            DataBank.Instance.MyStats.DayCount++;
-
+            if (scoreDisplay.Score < 15)
+            {
+                DataBank.Instance.MyStats.Nuts -= 100;
+            }
+            else
+            {
+                DataBank.Instance.MyStats.Nuts += 150;
+            }
         }
 
+        DataBank.Instance.MyStats.DayCount++;
         saveManager.Save();
         SceneManager.LoadScene("Casino");
     }

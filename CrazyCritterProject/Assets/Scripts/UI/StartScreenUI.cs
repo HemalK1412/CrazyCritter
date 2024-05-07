@@ -37,9 +37,17 @@ public class StartScreenUI : MonoBehaviour
 
     public void PlayButtonPressed()
     {
-        SceneManager.LoadScene("Casino");
+
+        if (!PlayerPrefs.HasKey("NewGame"))
+        {
+            int initialcurrency = PlayerPrefs.GetInt("InitialCurrency");
+            DataBank.Instance.MyStats.Nuts = initialcurrency;
+        }
+        SaveManager.Save();
 
         PlayerPrefs.SetInt("NewGame", 1);
+        SceneManager.LoadScene("Casino");
+
     }
 
 
@@ -68,6 +76,7 @@ public class StartScreenUI : MonoBehaviour
     public void DeleteSavePressed()
     {
         SaveManager.WipeSaves();
+        PlayerPrefs.DeleteAll();
     }
 
 
