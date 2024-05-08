@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+
 public class GameManager : MonoBehaviour
 {
     public GameObject p_Player;
@@ -12,6 +13,7 @@ public class GameManager : MonoBehaviour
     public bool PauseGameOnStart = true;
     public bool isPaused;
 
+    public GameObject BackStoryUI;
     public GameObject GunPickup;
     public GameObject HatPickup;
     public Transform GunPickUpLocation;
@@ -22,6 +24,18 @@ public class GameManager : MonoBehaviour
     private void Awake()
     {
         saveManager.Save();
+
+        if (!DataBank.Instance.MyStats.Backstory)
+        {
+            Time.timeScale = 0f;
+            HUD.gameObject.SetActive(false);
+            BackStoryUI.SetActive(true);
+        }
+        else
+        {
+            Destroy(BackStoryUI);
+        }
+
         if (DataBank.Instance == null || DataBank.Instance.MyStats.GunPickup == false)
         {
             if(GunPickup!=null)

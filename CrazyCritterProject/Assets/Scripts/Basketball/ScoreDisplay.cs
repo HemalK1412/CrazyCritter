@@ -12,13 +12,26 @@ public class ScoreDisplay : MonoBehaviour
 	public int ScorePerCombo;
 	public int ComboCount;
 
+	public float PowerUpDuration;
+
+	public bool powerUPCollected = false;
+
 
 
 	public void IncreaseScore()
 	{
-		Score += 1;
-		
-		/* The section is for the combo version of the game.
+
+		if(powerUPCollected)
+		{
+			Score += 2;
+		}
+		else
+		{
+            Score += 1;
+
+        }
+
+        /* The section is for the combo version of the game.
 		ComboCount++;
         
 		if(ComboCount >= ScorePerCombo)
@@ -33,6 +46,16 @@ public class ScoreDisplay : MonoBehaviour
         ScoreHUD.text = "Score: " + Score.ToString();
 
     }
+
+	public  IEnumerator PowerUPcollected()
+	{
+
+		powerUPCollected = true;
+
+		yield return new WaitForSeconds(PowerUpDuration);
+
+		powerUPCollected = false;
+	}
 
 	/*
     public void ResetCombo()

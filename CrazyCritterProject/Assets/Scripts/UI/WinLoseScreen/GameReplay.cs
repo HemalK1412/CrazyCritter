@@ -32,6 +32,11 @@ public class GameReplay : MonoBehaviour
     {
         saveManager.WipeSaves();
 
+        DataBank.Instance.MyStats = new Stats();
+
+        PlayerPrefs.SetInt("InitialCurrency", 500);
+        PlayerPrefs.SetInt("TargetScore", 1000);
+
         PlayerPrefs.DeleteKey("NewGame");
         //Remove key to assign initial currency in databank.
         SceneManager.LoadScene("StartScreen");

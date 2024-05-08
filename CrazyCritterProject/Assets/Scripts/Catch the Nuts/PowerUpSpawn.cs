@@ -13,7 +13,9 @@ public class PowerUpSpawn : MonoBehaviour
         if (miniGamestimer.remainingTime <= 40f && miniGamestimer.remainingTime >= 20f && !powerUpSpawned)
         {
             powerUpObject.SetActive(true);
-            powerUpObject.transform.position = new Vector3(Random.Range(PowerUpSpawnCollider.bounds.min.x, PowerUpSpawnCollider.bounds.max.x), 1f, Random.Range(PowerUpSpawnCollider.bounds.min.z, PowerUpSpawnCollider.bounds.max.z));
+            powerUpObject.transform.position = 
+                new Vector3(Random.Range(PowerUpSpawnCollider.bounds.min.x, PowerUpSpawnCollider.bounds.max.x),
+                Random.Range(PowerUpSpawnCollider.bounds.min.y, PowerUpSpawnCollider.bounds.max.y), 1f);
             powerUpSpawned = true;
         }
         else if (miniGamestimer.remainingTime < 20f)
