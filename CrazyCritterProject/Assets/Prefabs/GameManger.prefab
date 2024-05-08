@@ -44,10 +44,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1a6e7d42c8158b8478add4542b8fcf7c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  p_player: {fileID: 0}
   gm_DayoftheWeek: 0
   gm_Nuts: 0
   gm_position: []
-  Daycount: {fileID: 0}
-  Nuts: {fileID: 0}
-  Position: {fileID: 0}
+  p_Player: {fileID: 0}
+  p_Rigidbody: {fileID: 0}
+  InitialStartCanvas: {fileID: 0}
+  PauseCanvas: {fileID: 0}

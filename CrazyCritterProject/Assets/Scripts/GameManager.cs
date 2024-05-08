@@ -1,55 +1,114 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEditorInternal;
 using UnityEngine;
-using TMPro;
+using UnityEngine.SceneManagement;
+
 
 public class GameManager : MonoBehaviour
 {
-    public GameObject p_player;
+    public GameObject p_Player;
+    public Rigidbody p_Rigidbody;
 
-    [SerializeField] int gm_DayoftheWeek;
+    public Canvas PauseCanvas;
+    public Canvas HUD;
 
-    [SerializeField] int gm_Nuts;
+    public bool PauseGameOnStart = true;
+    public bool isPaused;
 
-    [SerializeField] float[] gm_position;
+    public GameObject BackStoryUI;
+    public GameObject GunPickup;
+    public GameObject HatPickup;
+    public Transform GunPickUpLocation;
+    public Transform HatPickupLocation;
 
-    public TMP_Text Daycount;
-    public TMP_Text Nuts;
-    public TMP_Text Position;
+    [SerializeField] SaveManager saveManager;
 
-    public void Awake()
+    private void Awake()
     {
-        float[] gm_position = new float[3];
-        gm_position[1] = p_player.transform.position.x;
-        gm_position[2] = p_player.transform.position.y;
-        gm_position[3] = p_player.transform.position.z;
+        saveManager.Save();
+
+        if (!DataBank.Instance.MyStats.Backstory)
+        {
+            Time.timeScale = 0f;
+            HUD.gameObject.SetActive(false);
+            BackStoryUI.SetActive(true);
+        }
+        else
+        {
+            Destroy(BackStoryUI);
+        }
+
+        if (DataBank.Instance == null || DataBank.Instance.MyStats.GunPickup == false)
+        {
+            if(GunPickup!=null)
+                GunPickup.transform.position = GunPickUpLocation.transform.position;
+        }
+        else
+        {
+            Destroy(GunPickup);
+        }
+
+        if (DataBank.Instance == null || DataBank.Instance.MyStats.HatPickup == false)
+        {
+            if(HatPickup!=null)
+                HatPickup.transform.position = HatPickupLocation.transform.position;
+        }
+        else
+        {
+            Destroy(HatPickup);
+        }
+
+        if(DataBank.Instance.MyStats.Nuts <= 90 || DataBank.Instance.MyStats.DayCount == 8)
+        {
+            saveManager.Save();
+            SceneManager.LoadScene("WinLose");
+            // Nut Calculation is in The Win Lose scene
+        }
     }
-    public void SaveData()
+
+
+    public void Start()
     {
         /*
-        PlayerPrefs.SetInt("DayCount", gm_DayoftheWeek);
-
-        PlayerPrefs.SetInt("Nuts", gm_Nuts);
-
-        PlayerPrefs.SetFloat("gm_positionX", gm_position[1]);
-        PlayerPrefs.SetFloat("gm_positionY", gm_position[2]);
-        PlayerPrefs.SetFloat("gm_positionZ", gm_position[3]);
+        if (PauseCanvas == null) return;
+        if (PauseGameOnStart)
+        {
+            PauseCanvas.gameObject.SetActive(false);
+            PauseGame();
+        }
+        else
+        {
+            ResumeGame();
+        }
         */
-
-
     }
 
-    public void LoadData()
+    public void Update()
     {
-        Daycount.text = PlayerPrefs.GetInt("DayCount").ToString();
-        Nuts.text = PlayerPrefs.GetInt("Nuts").ToString();
-
-        Position.text = (PlayerPrefs.GetFloat("gm_positionX").ToString() + "," + PlayerPrefs.GetFloat("gm_positionY").ToString() + "," + PlayerPrefs.GetFloat("gm_positionZ").ToString());
+        if(Input.GetKeyDown(KeyCode.Escape))
+        {
+            if (PauseCanvas == null) return;
+            PauseGame();
+        }
     }
 
-    public void DeleteData()
+    public void PauseGame()
     {
-        PlayerPrefs.DeleteAll();
+        if (p_Rigidbody == null) return;
+        isPaused = true;
+
+        PauseCanvas.gameObject.SetActive(true);
+
+        Time.timeScale = 0f;
+        Cursor.lockState = CursorLockMode.None;
     }
+
+    public void ResumeGame()
+    {
+        if (p_Rigidbody == null) return;
+        
+        isPaused = false;
+        Time.timeScale = 1f;
+        Cursor.lockState = CursorLockMode.Locked;
+    }
+
 }
+
