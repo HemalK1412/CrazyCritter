@@ -9,6 +9,8 @@ public class MiniGameLoader : MonoBehaviour
 
     public GameObject PressE;
 
+    [SerializeField] SaveManager saveManager;
+
     public void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("Player"))
@@ -35,6 +37,7 @@ public class MiniGameLoader : MonoBehaviour
     {
         if(UnityEngine.Input.GetKeyDown(KeyCode.E) && PlayerisHere == true)
         {
+            saveManager.Save();
             Debug.Log("Scene Switch to : " + MiniGameScene);
             SceneManager.LoadScene(MiniGameScene);
         }

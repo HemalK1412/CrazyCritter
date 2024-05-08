@@ -16,6 +16,7 @@ public class ScoreDisplay : MonoBehaviour
 
 	public bool powerUPCollected = false;
 
+	[SerializeField]BasketballManager basketballManager;
 
 
 	public void IncreaseScore()
@@ -43,7 +44,7 @@ public class ScoreDisplay : MonoBehaviour
 		*/
 
 
-        ScoreHUD.text = "Score: " + Score.ToString();
+        ScoreHUD.text = "Score: " + Score.ToString() + "/" + basketballManager.TargetScore;
 
     }
 

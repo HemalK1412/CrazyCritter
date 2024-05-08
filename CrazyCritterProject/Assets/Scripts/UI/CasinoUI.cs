@@ -1,5 +1,6 @@
 using UnityEngine;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class CasinoUI : MonoBehaviour
 {
@@ -25,5 +26,10 @@ public class CasinoUI : MonoBehaviour
 
         BackStoryElem.SetActive(false);
         HUD.gameObject.SetActive(true);
+    }
+
+    public void OnpressQuit()
+    {
+        Application.Quit();
     }
 }

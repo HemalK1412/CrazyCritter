@@ -2107,7 +2107,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Score: 0'
+  m_text: 'Score: 0/30'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2100000, guid: e73a58f6e2794ae7b1b7e50b7fb811b0, type: 2}
@@ -2203,6 +2203,7 @@ MonoBehaviour:
   ComboCount: 0
   PowerUpDuration: 0
   powerUPCollected: 0
+  basketballManager: {fileID: 991398414}
 --- !u!1 &617362518
 GameObject:
   m_ObjectHideFlags: 0
@@ -2264,8 +2265,10 @@ MonoBehaviour:
 
     Each Minigame costs 100 nuts to Start.
 
-    To win score 15
-    hoops.'
+    To win score 30
+    hoops.
+
+    Keep an eye out for the Basketball (x2 points).'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2100000, guid: e73a58f6e2794ae7b1b7e50b7fb811b0, type: 2}
@@ -3230,7 +3233,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mode: 0
   showDifference: 0
-  material: {fileID: 1068298590}
+  material: {fileID: 2089399860}
 --- !u!114 &873111208
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3389,10 +3392,12 @@ MonoBehaviour:
   BasketballMiniGameEndCanvas: {fileID: 777063000}
   BallLauncher: {fileID: 147682771}
   CameraRotation: {fileID: 147682770}
+  TargetScore: 30
   EndScoreText: {fileID: 532871462}
   saveManager: {fileID: 737203686}
   miniGamestimer: {fileID: 1091183448}
   scoreDisplay: {fileID: 563097212}
+  colorBlindFilter: {fileID: 873111207}
 --- !u!1 &1036420620
 GameObject:
   m_ObjectHideFlags: 0
@@ -3593,40 +3598,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 10fa0c01d9324f6409c21d5782781f89, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!21 &1068298590
-Material:
-  serializedVersion: 8
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: Hidden/ChannelMixer
-  m_Shader: {fileID: 4800000, guid: 23b227a99d5937e4d880bc3ef49d02f5, type: 3}
-  m_Parent: {fileID: 0}
-  m_ModifiedSerializedProperties: 0
-  m_ValidKeywords: []
-  m_InvalidKeywords: []
-  m_LightmapFlags: 4
-  m_EnableInstancingVariants: 0
-  m_DoubleSidedGI: 0
-  m_CustomRenderQueue: -1
-  stringTagMap: {}
-  disabledShaderPasses: []
-  m_LockedProperties: 
-  m_SavedProperties:
-    serializedVersion: 3
-    m_TexEnvs:
-    - _MainTex:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    m_Ints: []
-    m_Floats: []
-    m_Colors:
-    - _B: {r: 0, g: 0, b: 1, a: 1}
-    - _G: {r: 0, g: 1, b: 0, a: 1}
-    - _R: {r: 1, g: 0, b: 0, a: 1}
-  m_BuildTextureStacks: []
 --- !u!1 &1091183446
 GameObject:
   m_ObjectHideFlags: 0
@@ -6265,6 +6236,40 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc4fbc755f719d845b859741338d72a8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!21 &2089399860
+Material:
+  serializedVersion: 8
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Hidden/ChannelMixer
+  m_Shader: {fileID: 4800000, guid: 23b227a99d5937e4d880bc3ef49d02f5, type: 3}
+  m_Parent: {fileID: 0}
+  m_ModifiedSerializedProperties: 0
+  m_ValidKeywords: []
+  m_InvalidKeywords: []
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_LockedProperties: 
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _MainTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Ints: []
+    m_Floats: []
+    m_Colors:
+    - _B: {r: 0, g: 0, b: 1, a: 1}
+    - _G: {r: 0, g: 1, b: 0, a: 1}
+    - _R: {r: 1, g: 0, b: 0, a: 1}
+  m_BuildTextureStacks: []
 --- !u!4 &2094532999 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6944840094812725238, guid: ec8197d75601f124b868d7159cac5951, type: 3}

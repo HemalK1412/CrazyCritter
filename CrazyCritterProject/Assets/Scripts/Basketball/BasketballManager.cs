@@ -14,14 +14,20 @@ public class BasketballManager : MonoBehaviour
     public BallLauncher BallLauncher;
     public CameraRotation CameraRotation;
 
+    public int TargetScore;
+
     public TextMeshProUGUI EndScoreText;
 
     [SerializeField] SaveManager saveManager;
     [SerializeField] private MiniGamestimer miniGamestimer;
     [SerializeField] private ScoreDisplay scoreDisplay;
+    [SerializeField] ColorBlindFilter colorBlindFilter;
 
     private void Awake()
     {
+        ColorBlindMode mode = (ColorBlindMode)DataBank.Instance.MyStats.ColorBlindEnum;
+        colorBlindFilter.mode = mode;
+        //DataBank.Instance.MyStats.ColorBlindEnum = (int)colorBlindFilter.mode;
         BasketballMiniGameHUD.gameObject.SetActive(false);
         BasketballMiniGameStartCanvas.gameObject.SetActive(true);
         BasketballMiniGameEndCanvas.gameObject.SetActive(false);
@@ -38,7 +44,7 @@ public class BasketballManager : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (miniGamestimer.remainingTime <= 0)
+        if (miniGamestimer.remainingTime <= 0 || scoreDisplay.Score >= TargetScore)
         {
             MiniGameEnd();
         }
@@ -61,7 +67,7 @@ public class BasketballManager : MonoBehaviour
         BasketballMiniGameEndCanvas.gameObject.SetActive(true);
 
         Cursor.lockState = CursorLockMode.None;
-        if (scoreDisplay.Score < 15)
+        if (scoreDisplay.Score < TargetScore)
         {
             EndScoreText.text = $"Awwww! You lost 100 nuts!";
         }
@@ -76,7 +82,7 @@ public class BasketballManager : MonoBehaviour
     {
         if (DataBank.Instance != null)
         {
-            if (scoreDisplay.Score < 15)
+            if (scoreDisplay.Score < TargetScore)
             {
                 DataBank.Instance.MyStats.Nuts -= 100;
             }

@@ -62,6 +62,7 @@ public class EnemyAI : MonoBehaviour
                     DataBank.Instance.MyStats.Nuts -= NutToDeduct;
                 
                 Debug.Log("You have been caught.");
+                DataBank.Instance.MyStats.DayCount++;
                 OnCaughtPlayer?.Invoke();
                 saveManager.Save();
                 SceneManager.LoadScene("Casino");

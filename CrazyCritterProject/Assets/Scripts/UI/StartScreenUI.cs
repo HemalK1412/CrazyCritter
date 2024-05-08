@@ -40,6 +40,7 @@ public class StartScreenUI : MonoBehaviour
 
         if (!PlayerPrefs.HasKey("NewGame"))
         {
+            DataBank.Instance.MyStats.DayCount = 1;
             int initialcurrency = PlayerPrefs.GetInt("InitialCurrency");
             DataBank.Instance.MyStats.Nuts = initialcurrency;
         }

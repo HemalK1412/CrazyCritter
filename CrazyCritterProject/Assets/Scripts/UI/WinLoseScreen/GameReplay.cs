@@ -13,10 +13,14 @@ public class GameReplay : MonoBehaviour
     public VideoClip LoseClip;
 
     public SaveManager saveManager;
+    [SerializeField] ColorBlindFilter colorBlindFilter;
 
     public void Awake()
     {
-        if (DataBank.Instance.MyStats.Nuts >= PlayerPrefs.GetFloat("TargetScore"))
+        ColorBlindMode mode = (ColorBlindMode)DataBank.Instance.MyStats.ColorBlindEnum;
+        colorBlindFilter.mode = mode;
+        //DataBank.Instance.MyStats.ColorBlindEnum = (int)colorBlindFilter.mode;
+        if (DataBank.Instance.MyStats.Nuts >= PlayerPrefs.GetInt("TargetScore"))
         {
             WinCondition.SetActive(true);
             VideoPlayer.clip = WinClip;

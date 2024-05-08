@@ -10,7 +10,7 @@ public class PowerUpSpawn : MonoBehaviour
 
     void Update()
     {
-        if (miniGamestimer.remainingTime <= 40f && miniGamestimer.remainingTime >= 20f && !powerUpSpawned)
+        if (miniGamestimer.remainingTime <= 40f && miniGamestimer.remainingTime >= 30f && !powerUpSpawned)
         {
             powerUpObject.SetActive(true);
             powerUpObject.transform.position = 

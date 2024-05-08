@@ -17,8 +17,6 @@ public class DataBank : MonoBehaviour
         PlayerPrefs.SetInt("TargetScore", 1000);
 
 
-
-
         DontDestroyOnLoad(gameObject);
         
         if (Instance == null)

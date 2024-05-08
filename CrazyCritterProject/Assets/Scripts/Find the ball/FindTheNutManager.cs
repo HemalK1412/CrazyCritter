@@ -23,9 +23,13 @@ public class FindTheNutManager : MonoBehaviour
     [SerializeField] NutParent nutParent;
     [SerializeField] Shuffle shuffle;
     [SerializeField] Selection selection;
-    
+    [SerializeField] ColorBlindFilter colorBlindFilter;
+
     private void Awake()
     {
+        ColorBlindMode mode = (ColorBlindMode)DataBank.Instance.MyStats.ColorBlindEnum;
+        colorBlindFilter.mode = mode;
+        //DataBank.Instance.MyStats.ColorBlindEnum = (int)colorBlindFilter.mode;
         FindTheNutMiniGameStartCanvas.gameObject.SetActive(true);
 
         Player.GetComponent<Selection>().enabled = false;
@@ -75,6 +79,7 @@ public class FindTheNutManager : MonoBehaviour
 
     IEnumerator GetToPositions()
     {
+        yield return new WaitForSeconds(1.5f);
 
         float t = 0;
 
