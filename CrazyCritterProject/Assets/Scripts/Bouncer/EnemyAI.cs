@@ -8,13 +8,17 @@ using UnityEngine.SceneManagement;
 
 public class EnemyAI : MonoBehaviour
 {
+    public Animator animator;
     public Transform player;
-    public float chaseSpeed = 3f;
+    public float walkingSpeed = 1f;
+    public float chaseSpeed = 2f;
     public float chaseDistance = 5f;
     public float captureDistance = 1f;
     public int NutToDeduct;
 
     [SerializeField] private NavMeshPatrol patrol;
+    [SerializeField] private NavMeshAgent agent;
+    
     private bool isChasing = false;
     
     public UnityEvent OnChase;
@@ -32,7 +36,8 @@ public class EnemyAI : MonoBehaviour
         if (!isChasing)
         {
             float distanceToPlayer = Vector3.Distance(transform.position, player.position);
-
+            agent.speed = walkingSpeed;
+            animator.SetFloat("Speed", walkingSpeed);
             if (distanceToPlayer <= chaseDistance)
             {
                 isChasing = true;
@@ -44,7 +49,8 @@ public class EnemyAI : MonoBehaviour
         {
             GetComponent<NavMeshAgent>().destination = player.position;
             float distanceToPlayer = Vector3.Distance(transform.position, player.position);
-
+            agent.speed = chaseSpeed;
+            animator.SetFloat("Speed", chaseSpeed);
             if (distanceToPlayer > chaseDistance)
             {
                 isChasing = false;

@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class SmoothControl : MonoBehaviour
 {
+    public Animator animator;
     public float speed;
     public float turnSpeed;
 
@@ -24,8 +25,8 @@ public class SmoothControl : MonoBehaviour
     void Update()
     {
         horizontalAxisValue = Input.GetAxisRaw("Horizontal");
-        verticalAxisValue = Input.GetAxisRaw("Vertical");
-
+        verticalAxisValue = Input.GetAxis("Vertical");
+        animator.SetFloat("Speed",  verticalAxisValue);
     }
 
     void FixedUpdate()

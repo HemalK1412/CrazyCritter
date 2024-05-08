@@ -13,7 +13,7 @@ public class AudioControl : MonoBehaviour
     public float BG_Volume;
     public float SFX_Volume;
 
-    private void Awake()
+    private void Start()
     {
         if (PlayerPrefs.HasKey("p_PrefsMasterVolume"))
         {
@@ -25,7 +25,7 @@ public class AudioControl : MonoBehaviour
         }
 
 
-        if (PlayerPrefs.HasKey("p_PrefsbackGroundVolume"))
+        if (PlayerPrefs.HasKey("p_PrefsBackgroundVolume"))
         {
             LoadBackgroundVolume();
         }
@@ -35,7 +35,7 @@ public class AudioControl : MonoBehaviour
         }
         
         
-        if (PlayerPrefs.HasKey("p_PrefsMasterVolume"))
+        if (PlayerPrefs.HasKey("p_PrefsSFXVolume"))
         {
             LoadSFXVolume();
         }
@@ -56,8 +56,9 @@ public class AudioControl : MonoBehaviour
 
     public void LoadMasterVolume()
     {
-        MasterVolumeSlider.value = PlayerPrefs.GetFloat("p_PrefsMasterVolume");
-        SetMasterVolume();
+        float volume = PlayerPrefs.GetFloat("p_PrefsMasterVolume");
+        MasterVolumeSlider.value = volume;
+        Master.SetFloat("VolumeMaster", Mathf.Log10(volume)*20f);
     }
 
     public void SetBackgroundVolume()
@@ -70,8 +71,9 @@ public class AudioControl : MonoBehaviour
 
     public void LoadBackgroundVolume()
     {
-        BackgroundVolumeSlider.value = PlayerPrefs.GetFloat("p_PrefsBackgroundVolume");
-        SetBackgroundVolume();
+        float volume = PlayerPrefs.GetFloat("p_PrefsBackgroundVolume");
+        BackgroundVolumeSlider.value = volume;
+        Master.SetFloat("VolumeBackground", Mathf.Log10(volume) * 20f);
     }
     
 
@@ -85,7 +87,9 @@ public class AudioControl : MonoBehaviour
 
     public void LoadSFXVolume()
     {
-        SFXVolumeSlider.value = PlayerPrefs.GetFloat("p_PrefsSFXVolume");
+        float volume = PlayerPrefs.GetFloat("p_PrefsSFXVolume");
+        SFXVolumeSlider.value = volume;
+        Master.SetFloat("VolumeSFX", Mathf.Log10(volume) * 20f);
         SetSFXVolume();
     }
 
