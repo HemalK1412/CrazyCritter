@@ -1,0 +1,209 @@
+fileFormatVersion: 2
+guid: a8782e41e403a7f49b6c8563a3dd1014
+ModelImporter:
+  serializedVersion: 22200
+  internalIDToNameTable: []
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: aiStandardSurface2
+    second: {fileID: 2100000, guid: 6194ff1ec3196a747b1fac5a508bf24e, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: aiStandardSurface3
+    second: {fileID: 2100000, guid: beda9acbcd1f782428013d8ebeb78fc9, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: aiStandardSurface4
+    second: {fileID: 2100000, guid: 56773613971f902428e3110bb149be4d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: aiStandardSurface5
+    second: {fileID: 2100000, guid: 3e68c7466dd0c224db1a168372428a41, type: 2}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Squirrel maya_Body_BaseColor.1001
+    second: {fileID: 2800000, guid: bcc8eb6c97fd9174790565d7a706ca54, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Squirrel maya_Body_Metallic.1001
+    second: {fileID: 2800000, guid: 1deddc63cfc31a04c83ae9bd4029d842, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Squirrel maya_Body_Normal.1001
+    second: {fileID: 2800000, guid: ea349954e5f76834ca45b30eac3076d5, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Squirrel maya_Body_Roughness.1001
+    second: {fileID: 2800000, guid: 4fca7a1af1c2d9f4db752609612f03bc, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Squirrel maya_Eyes_BaseColor.1001
+    second: {fileID: 2800000, guid: 4ebb7ad6ca1841e438f0be9b0eadf9db, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Squirrel maya_Eyes_Metallic.1001
+    second: {fileID: 2800000, guid: 962ea98247cba034ba8f71a25bae51f2, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Squirrel maya_Eyes_Normal.1001
+    second: {fileID: 2800000, guid: 5c00cd413c446334495f96c2f16d1acd, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Squirrel maya_Eyes_Roughness.1001
+    second: {fileID: 2800000, guid: cf019cc379bad1f44b4c1ce151c1bc86, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Squirrel maya_Head_BaseColor.1001
+    second: {fileID: 2800000, guid: 368631946f488c9469a8c477314b365d, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Squirrel maya_Head_Metallic.1001
+    second: {fileID: 2800000, guid: bf71360bc65baea4f859fa5ccc798b2d, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Squirrel maya_Head_Normal.1001
+    second: {fileID: 2800000, guid: d2d4153c8840e3a43aab2fe67a30ab83, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Squirrel maya_Head_Roughness.1001
+    second: {fileID: 2800000, guid: 68278693d056d6f489db3baa8bf140cb, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Squirrel maya_Pants_BaseColor.1001
+    second: {fileID: 2800000, guid: 68da3b405465cfb4c8fb959e28350f69, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Squirrel maya_Pants_Metallic.1001
+    second: {fileID: 2800000, guid: 3a8a6699db12cc342a81766f372d731a, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Squirrel maya_Pants_Normal.1001
+    second: {fileID: 2800000, guid: d26b649df1521e542b3e9923989f8358, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Squirrel maya_Pants_Roughness.1001
+    second: {fileID: 2800000, guid: 143ab7a6e3503024081196de6d9da57a, type: 3}
+  materials:
+    materialImportMode: 2
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    removeConstantScaleCurves: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 0
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    sortHierarchyByName: 1
+    importPhysicalCameras: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    nodeNameCollisionStrategy: 1
+    fileIdsGeneration: 2
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    keepQuads: 0
+    weldVertices: 1
+    bakeAxisConversion: 0
+    preserveHierarchy: 0
+    skinWeightsMode: 0
+    maxBonesPerVertex: 4
+    minBoneWeight: 0.001
+    optimizeBones: 1
+    meshOptimizationFlags: -1
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVMarginMethod: 1
+    secondaryUVMinLightmapResolution: 40
+    secondaryUVMinObjectScale: 1
+    secondaryUVPackMargin: 4
+    useFileScale: 0
+    strictVertexDataChecks: 0
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  referencedClips: []
+  importAnimation: 1
+  humanDescription:
+    serializedVersion: 3
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    globalScale: 1
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  autoGenerateAvatarMappingIfUnspecified: 1
+  animationType: 2
+  humanoidOversampling: 1
+  avatarSetup: 0
+  addHumanoidExtraRootOnlyWhenUsingAvatar: 1
+  importBlendShapeDeformPercent: 1
+  remapMaterialsIfMaterialImportModeIsNone: 0
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
